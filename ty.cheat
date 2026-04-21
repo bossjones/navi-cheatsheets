@@ -1,0 +1,86 @@
+% ty, python
+
+# Check the current project for type errors
+ty check
+
+# Check specific files or directories
+ty check <path>
+
+# Watch files and recheck on change (incremental)
+ty check --watch <path>
+
+# Check and apply automatic fixes
+ty check --fix
+
+# Add ty:ignore comments for all current diagnostics
+ty check --add-ignore
+
+# Output in CI-friendly format (github, gitlab, junit, concise, full)
+ty check --output-format <output_format>
+
+# Treat all rules as errors (strict mode)
+ty check --error all
+
+# Treat a specific rule as an error
+ty check --error <rule>
+
+# Warn on a specific rule
+ty check --warn <rule>
+
+# Disable (ignore) a specific rule
+ty check --ignore <rule>
+
+# Exit with code 1 if any warnings are found
+ty check --error-on-warning
+
+# Always exit 0 (useful in CI to surface diagnostics without blocking)
+ty check --exit-zero
+
+# Target a specific Python version
+ty check --python-version <python_version>
+
+# Target a specific platform
+ty check --python-platform <platform>
+
+# Check using a specific virtual environment or interpreter
+ty check --python <venv_path>
+
+# Use a custom config file instead of auto-discovery
+ty check --config-file <config_file>
+
+# Exclude paths matching a glob pattern
+ty check --exclude <exclude_pattern>
+
+# Suppress diagnostics with quiet output
+ty check --quiet
+
+# Verbose output (repeat for more: -vv, -vvv)
+ty check --verbose
+
+# Start the language server (for editor integration)
+ty server
+
+# Show ty version
+ty version
+
+# Show ty version as JSON
+ty version --output-format json
+
+# Explain a specific rule
+ty explain rule <rule>
+
+# List and explain all rules
+ty explain rule
+
+# Generate shell completion script
+ty generate-shell-completion <shell>
+
+$ path: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ output_format: echo -e "full\nconcise\ngithub\ngitlab\njunit" --- --column 1
+$ rule: echo -e "invalid-argument-type\nunresolved-import\npossibly-unresolved-reference\nunresolved-attribute\nmissing-argument\ninvalid-return-type\ninvalid-assignment\nunsupported-operator\ndivision-by-zero\ncall-non-callable\nnot-iterable\nnot-subscriptable\nall" --- --column 1
+$ python_version: echo -e "3.13\n3.12\n3.11\n3.10\n3.9\n3.8\n3.7\n3.14\n3.15" --- --column 1
+$ platform: echo -e "linux\ndarwin\nwin32\nall\nandroid\nios" --- --column 1
+$ venv_path: fd --type d --glob ".venv" --max-depth 3 2>/dev/null --- --column 1
+$ config_file: fd --type f --glob "ty.toml" --max-depth 3 2>/dev/null --- --column 1
+$ exclude_pattern: echo -e "tests/**\n**/__pycache__/**\nbuild/**\ndist/**\n.venv/**" --- --column 1
+$ shell: echo -e "bash\nzsh\nfish\npowershell\nelvish" --- --column 1

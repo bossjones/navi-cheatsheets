@@ -43,7 +43,7 @@
 | fdupes | Identify or delete duplicate files | [GitHub](https://github.com/adrianlopezroche/fdupes) | [fdupes.cheat](./fdupes.cheat) |
 | ncdu | NCurses disk usage analyzer | [Official](https://dev.yorhel.nl/ncdu) | [ncdu.cheat](./ncdu.cheat) |
 | lsof | List open files, sockets, and connections | [GitHub](https://github.com/lsof-org/lsof) | [lsof.cheat](./lsof.cheat) |
-| mactop | Apple Silicon system monitor TUI | [GitHub](https://github.com/context-labs/mactop) | [mactop.cheat](./mactop.cheat) |
+| mactop | Real-time Apple Silicon system monitor TUI with CPU, GPU, memory, and thermal metrics | [GitHub](https://github.com/metaspartan/mactop) | [mactop.cheat](./mactop.cheat) |
 | pstree | Show running processes as a tree | [Official](http://www.thp.uni-duisburg.de/pstree/) | [pstree.cheat](./pstree.cheat) |
 | fastfetch | Fast system info fetcher (neofetch-like) | [GitHub](https://github.com/fastfetch-cli/fastfetch) | [fastfetch.cheat](./fastfetch.cheat) |
 | pv | Pipe viewer, monitor data progress through pipes | [Official](https://www.ivarch.com/programs/pv.shtml) | [pv.cheat](./pv.cheat) |
@@ -62,3 +62,12 @@
 | GNU Screen | Terminal multiplexer with VT100/ANSI emulation | [GNU](https://www.gnu.org/software/screen/) | [screen.cheat](./screen.cheat) |
 | uv | Extremely fast Python package installer and resolver | [GitHub](https://github.com/astral-sh/uv) | [uv.cheat](./uv.cheat) |
 | Repomix | Pack repository contents into a single AI-friendly file | [GitHub](https://github.com/yamadashy/repomix) | [repomix.cheat](./repomix.cheat) |
+| ty | Extremely fast Python type checker and language server, written in Rust | [GitHub](https://github.com/astral-sh/ty) | [ty.cheat](./ty.cheat) |
+| eget | Easily install prebuilt binaries from GitHub releases, with automatic OS/arch detection | [GitHub](https://github.com/zyedidia/eget) | [eget.cheat](./eget.cheat) |
+| uvtemplate | Bootstrap modern Python projects with uv, ruff, type checking, and GitHub Actions | [GitHub](https://github.com/jlevy/uvtemplate) | [uvtemplate.cheat](./uvtemplate.cheat) |
+| playwright-cli | Token-efficient CLI for browser automation, recording, and session management | [GitHub](https://github.com/microsoft/playwright-cli) | [playwright-cli.cheat](./playwright-cli.cheat) |
+| guarddog | Identify malicious PyPI, npm, Go, RubyGems, GitHub Actions, and VSCode packages | [GitHub](https://github.com/DataDog/guarddog) | [guarddog.cheat](./guarddog.cheat) |
+| getnf | Interactive installer and manager for Nerd Fonts | [GitHub](https://github.com/getnf/getnf) | [getnf.cheat](./getnf.cheat) |
+| wtp | Git worktree manager with automatic setup hooks and shell navigation | [GitHub](https://github.com/satococoa/wtp) | [wtp.cheat](./wtp.cheat) |
+| adt | Bundled Ansible developer tools: lint, navigator, molecule, builder, and creator | [GitHub](https://github.com/ansible/ansible-dev-tools) | [adt.cheat](./adt.cheat) |
+| ruff | Extremely fast Python linter and code formatter, written in Rust | [GitHub](https://github.com/astral-sh/ruff) | [ruff.cheat](./ruff.cheat) |

@@ -1,0 +1,84 @@
+% network, network
+
+# Find primary local IPv4 address (en0)
+ipconfig getifaddr en0
+
+# List all local IPv4 addresses across interfaces
+ifconfig | grep 'inet ' | awk '{print $2}'
+
+# Find external public IPv4 via OpenDNS
+dig +short myip.opendns.com @resolver1.opendns.com
+
+# Find external public IPv4 via HTTP
+curl -4 -s ifconfig.me
+
+# Find external public IPv6 via HTTP
+curl -6 -s ifconfig.me
+
+# Kill process listening on a port
+lsof -ti :<port> | xargs kill -9
+
+# List all listening TCP ports with owning processes
+lsof -nP -iTCP -sTCP:LISTEN
+
+# List TCP listeners via netstat (macOS)
+netstat -anv -p tcp | grep LISTEN
+
+# Count connections to a port grouped by remote host
+netstat -tn 2>/dev/null | grep :<port> | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr | head
+
+# Test if a TCP port is reachable on a host
+nc -zv <host> <port>
+
+# Quick A record lookup
+dig +short <host>
+
+# Full DNS record dump for a host
+dig <host> ANY +noall +answer
+
+# Trace DNS resolution from the root servers
+dig +trace <host>
+
+# Reverse DNS lookup for an IP
+dig -x <host>
+
+# Host lookup via host(1)
+host <host>
+
+# nslookup a host
+nslookup <host>
+
+# Traceroute to a host
+traceroute <host>
+
+# MTR (My Traceroute) to a host
+mtr <host>
+
+# Ping a host with a fixed packet count
+ping -c <count> <host>
+
+# Show the default gateway IP
+netstat -rn | awk '/^default/ {print $2; exit}'
+
+# List all network interface names
+ifconfig -l
+
+# List hardware ports mapped to interface names (macOS)
+networksetup -listallhardwareports
+
+# Show MAC address of a specific interface
+ifconfig <interface> | awk '/ether/ {print $2}'
+
+# Flush DNS cache on macOS
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+# Show the local ARP table
+arp -a
+
+# Show active TCP socket statistics summary
+netstat -s -p tcp | head -40
+
+$ port: echo -e "22\n80\n443\n3000\n5432\n5173\n8000\n8080\n6379\n27017" --- --column 1
+$ host: echo -e "example.com\ngoogle.com\ngithub.com\ncloudflare.com\n8.8.8.8\n1.1.1.1" --- --column 1
+$ interface: ifconfig -l 2>/dev/null | tr ' ' '\n' --- --column 1
+$ count: echo -e "1\n3\n5\n10" --- --column 1

@@ -1,0 +1,115 @@
+% curl, http
+
+# Simple GET request
+curl <url>
+
+# Send with a specific HTTP method
+curl -X <method> <url>
+
+# Follow redirects
+curl -L <url>
+
+# Fail with non-zero exit on HTTP errors
+curl --fail <url>
+
+# Fail on HTTP errors but still print the body
+curl --fail-with-body <url>
+
+# Silent mode but still show errors
+curl -sS <url>
+
+# Save response body to a file
+curl -o <output> <url>
+
+# Save response body using the remote filename
+curl -O <url>
+
+# Resume a partially downloaded file
+curl -C - -O <url>
+
+# Include response headers in the output
+curl -i <url>
+
+# Fetch response headers only
+curl -I <url>
+
+# Verbose request/response tracing
+curl -v <url>
+
+# POST JSON body inline
+curl -X POST <url> -H 'Content-Type: application/json' -d '<json>'
+
+# POST JSON body from a file
+curl -X POST <url> -H 'Content-Type: application/json' --data-binary "@<file>"
+
+# POST form-urlencoded key/value
+curl <url> -d '<body_key>=<body_value>'
+
+# POST form-urlencoded with URL-safe encoding
+curl <url> --data-urlencode '<body_key>=<body_value>'
+
+# Upload a file as multipart form-data
+curl -F '<body_key>=@<file>' <url>
+
+# Send a custom request header
+curl -H '<header_name>: <header_value>' <url>
+
+# Bearer token authentication
+curl -H 'Authorization: Bearer <token>' <url>
+
+# Basic authentication
+curl -u <user>:<password> <url>
+
+# Set a custom User-Agent
+curl -A '<useragent>' <url>
+
+# Save received cookies to a jar file
+curl -c <cookie_jar> <url>
+
+# Send cookies from a jar file
+curl -b <cookie_jar> <url>
+
+# Route the request through an HTTP/SOCKS proxy
+curl -x <proxy_url> <url>
+
+# Force HTTP/2
+curl --http2 <url>
+
+# Connect over a Unix domain socket
+curl --unix-socket <file> http://localhost/<url>
+
+# Skip TLS certificate verification (testing only)
+curl -k <url>
+
+# Verify TLS using a custom CA bundle
+curl --cacert <file> <url>
+
+# Retry on transient errors
+curl --retry <retry_count> <url>
+
+# Limit transfer rate
+curl --limit-rate <rate_limit> <url>
+
+# Fetch multiple URLs in parallel
+curl --parallel <url> <url>
+
+# Show timing breakdown for a request
+curl -s -o /dev/null -w 'dns=%{time_namelookup}s connect=%{time_connect}s tls=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s\n' <url>
+
+$ url: echo -e "https://httpbin.org/get\nhttps://httpbin.org/post\nhttps://api.github.com/users/octocat\nhttp://localhost:8000\nhttps://jsonplaceholder.typicode.com/posts/1" --- --column 1
+$ method: echo -e "GET\nPOST\nPUT\nPATCH\nDELETE\nHEAD\nOPTIONS" --- --column 1
+$ header_name: echo -e "Accept\nContent-Type\nUser-Agent\nX-Api-Key\nCookie\nAuthorization" --- --column 1
+$ header_value: echo -e "application/json\napplication/xml\ntext/plain\ngzip" --- --column 1
+$ token: echo -e "changeme\nCHANGE_ME_TOKEN" --- --column 1
+$ user: echo -e "admin\nuser\ntest" --- --column 1
+$ password: echo -e "changeme\npassword\nsecret" --- --column 1
+$ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ output: echo -e "response.json\nresponse.txt\noutput.bin\n/tmp/download" --- --column 1
+$ json: echo -e '{"name":"test"}\n{"key":"value"}\n{"id":1,"title":"foo"}' --- --column 1
+$ body_key: echo -e "name\nemail\ntitle\nbody\nuserId" --- --column 1
+$ body_value: echo -e "test\nexample\nfoo\nbar" --- --column 1
+$ useragent: echo -e "Mozilla/5.0\ncurl/8.0.0\nMyApp/1.0" --- --column 1
+$ cookie_jar: echo -e "cookies.txt\n/tmp/cookies.txt\n$HOME/.curl-cookies" --- --column 1
+$ proxy_url: echo -e "http://localhost:8080\nsocks5://localhost:1080\nhttp://proxy.example.com:3128" --- --column 1
+$ retry_count: echo -e "1\n3\n5\n10" --- --column 1
+$ rate_limit: echo -e "100K\n1M\n10M" --- --column 1

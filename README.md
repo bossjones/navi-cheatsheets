@@ -118,3 +118,7 @@ finder:
 | wtp | Git worktree manager with automatic setup hooks and shell navigation | [GitHub](https://github.com/satococoa/wtp) | [wtp.cheat](./wtp.cheat) |
 | adt | Bundled Ansible developer tools: lint, navigator, molecule, builder, and creator | [GitHub](https://github.com/ansible/ansible-dev-tools) | [adt.cheat](./adt.cheat) |
 | ruff | Extremely fast Python linter and code formatter, written in Rust | [GitHub](https://github.com/astral-sh/ruff) | [ruff.cheat](./ruff.cheat) |
+| Homebrew (brew) | Package manager for macOS (and Linux) — formulae, casks, services, taps, bundles | [GitHub](https://github.com/Homebrew/brew) | [brew.cheat](./brew.cheat) |
+| macOS | macOS power-user one-liners: Finder defaults, diskutil, networksetup, pmset, screencapture, clipboard | [Docs](https://support.apple.com/guide/terminal/welcome/mac) | [osx.cheat](./osx.cheat) |
+| Network | General network troubleshooting: find IPs, ports, DNS, routes, interfaces, DNS cache flush | [Docs](https://man7.org/linux/man-pages/dir_section_8.html) | [network.cheat](./network.cheat) |
+| cURL | Command-line HTTP client and file transfer tool supporting dozens of protocols | [GitHub](https://github.com/curl/curl) | [curl.cheat](./curl.cheat) |

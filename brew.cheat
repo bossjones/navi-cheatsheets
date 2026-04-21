@@ -1,0 +1,165 @@
+% brew, pkg-mgr
+
+# Update Homebrew itself and all formula definitions
+brew update
+
+# Upgrade all outdated formulae and casks
+brew upgrade
+
+# Upgrade everything including auto-updating casks
+brew upgrade --greedy
+
+# Upgrade a specific installed formula
+brew upgrade <installed>
+
+# Show info about a formula
+brew info <formula>
+
+# Show info about a cask
+brew info --cask <cask>
+
+# Search formulae and casks matching a query
+brew search <query>
+
+# Install a formula
+brew install <formula>
+
+# Install a cask application
+brew install --cask <cask>
+
+# Reinstall a formula
+brew reinstall <installed>
+
+# Reinstall a cask
+brew reinstall --cask <caskinstalled>
+
+# Uninstall a formula
+brew uninstall <installed>
+
+# Uninstall a cask
+brew uninstall --cask <caskinstalled>
+
+# Uninstall a cask and remove all associated files
+brew uninstall --cask --zap <caskinstalled>
+
+# List all installed formulae and casks
+brew list
+
+# List only installed formulae
+brew list --formula
+
+# List only installed casks
+brew list --cask
+
+# List installed formulae with their versions
+brew list --versions
+
+# Show formulae and casks with newer versions available
+brew outdated
+
+# Pin a formula to prevent upgrades
+brew pin <installed>
+
+# Unpin a formula to allow upgrades
+brew unpin <installed>
+
+# Show top-level installed formulae (not dependencies of anything else)
+brew leaves
+
+# Show dependencies of a formula
+brew deps <formula>
+
+# Show dependency tree of a formula
+brew deps --tree <formula>
+
+# Show which installed formulae depend on a given formula
+brew uses --installed <installed>
+
+# Add a third-party tap
+brew tap <tap>
+
+# Remove a tap
+brew untap <tap>
+
+# List all services managed by brew
+brew services list
+
+# Start a service and register it to launch at login
+brew services start <service>
+
+# Stop a running service
+brew services stop <service>
+
+# Restart a service
+brew services restart <service>
+
+# Run a service once without registering it to launch at login
+brew services run <service>
+
+# Remove all unused services
+brew services cleanup
+
+# Start a service as root and register it at boot
+sudo brew services start <service>
+
+# Stop a service running as root
+sudo brew services stop <service>
+
+# Symlink a formula's files into the Homebrew prefix
+brew link <installed>
+
+# Force-link a keg-only formula
+brew link --force <installed>
+
+# Unlink a formula, removing its symlinks
+brew unlink <installed>
+
+# Link a formula, overwriting conflicting files in the prefix
+brew link --overwrite <installed>
+
+# Dump all installed taps, formulae, and casks into a Brewfile
+brew bundle dump --file=~/Brewfile
+
+# Install everything listed in a Brewfile
+brew bundle install --file=~/Brewfile
+
+# Uninstall anything not listed in the Brewfile
+brew bundle cleanup --file=~/Brewfile
+
+# Remove stale lock files and outdated downloads
+brew cleanup
+
+# Aggressively prune all cached downloads
+brew cleanup --prune=all
+
+# Uninstall dependencies that are no longer needed
+brew autoremove
+
+# Diagnose common issues with the Homebrew installation
+brew doctor
+
+# Opt out of anonymous analytics
+brew analytics off
+
+# Opt in to anonymous analytics
+brew analytics on
+
+# Print the Homebrew installation prefix
+brew --prefix
+
+# Print the Cellar path where formulae are installed
+brew --cellar
+
+# Print the path to the Homebrew git repository
+brew --repository
+
+# Print shell export statements to add Homebrew to PATH
+brew shellenv
+
+$ formula: brew formulae 2>/dev/null --- --column 1
+$ cask: brew casks 2>/dev/null --- --column 1
+$ installed: brew list --formula 2>/dev/null --- --column 1
+$ caskinstalled: brew list --cask 2>/dev/null --- --column 1
+$ service: brew services list 2>/dev/null | awk 'NR>1{print $1}' --- --column 1
+$ tap: brew tap 2>/dev/null --- --column 1
+$ query: echo -e "ripgrep\nfd\nbat\nfzf\nneovim" --- --column 1

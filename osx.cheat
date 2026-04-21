@@ -1,0 +1,127 @@
+% osx, mac-os
+
+# Copy stdin to clipboard
+pbcopy
+
+# Paste clipboard to stdout
+pbpaste
+
+# Interactive screen selection to clipboard
+screencapture -ic
+
+# Capture fullscreen to file
+screencapture <output_file>
+
+# Start capture in window selection mode
+screencapture -W <output_file>
+
+# Take screenshot after a delay
+screencapture -T <seconds> <output_file>
+
+# Show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles true; killall Finder
+
+# Hide hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles false; killall Finder
+
+# Show desktop icons
+defaults write com.apple.finder CreateDesktop true; killall Finder
+
+# Hide desktop icons
+defaults write com.apple.finder CreateDesktop false; killall Finder
+
+# Show path bar in Finder
+defaults write com.apple.finder ShowPathbar -bool true; killall Finder
+
+# Set desktop wallpaper from an image
+osascript -e 'tell application "System Events" to tell every desktop to set picture to "<image_path>"'
+
+# Show macOS version info
+sw_vers
+
+# Show hardware overview
+system_profiler SPHardwareDataType
+
+# Show CPU brand string
+sysctl -n machdep.cpu.brand_string
+
+# Show machine serial number
+system_profiler SPHardwareDataType | awk '/Serial/ {print $NF}'
+
+# Put display to sleep
+pmset displaysleepnow
+
+# Prevent sleep for N seconds
+caffeinate -d -t <seconds>
+
+# Prevent sleep indefinitely
+caffeinate -d
+
+# List all disks and partitions
+diskutil list
+
+# Show info for a disk or partition
+diskutil info '<disk_dev>'
+
+# Eject a mounted volume
+diskutil eject '<eject_vol>'
+
+# List APFS containers and volumes
+diskutil apfs list
+
+# List all network services
+networksetup -listallnetworkservices
+
+# Show info for a network service
+networksetup -getinfo '<network_service>'
+
+# Flush DNS cache
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+# Open a path in Finder
+open <file_or_dir>
+
+# Open the current directory in Finder
+open .
+
+# Open a file or dir with a specific app
+open -a '<app_name>' <file_or_dir>
+
+# Copy preserving metadata, stripping extended attrs
+cp -RX <file_or_dir> <target_path>
+
+# Strip extended attributes recursively
+xattr -rc <file_or_dir>
+
+# Rebuild Spotlight index for a volume
+sudo mdutil -E /Volumes/<eject_vol>
+
+# Disable Spotlight indexing on a volume
+sudo mdutil -i off /Volumes/<eject_vol>
+
+# Speak text aloud
+say '<text>'
+
+# Play an audio file
+afplay <file_or_dir>
+
+# List loaded launch agents matching a pattern
+launchctl list | grep <pattern>
+
+# Restart the Dock
+killall Dock
+
+# Restart Finder
+killall Finder
+
+$ file_or_dir: fd --max-depth 3 2>/dev/null --- --column 1
+$ target_path: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ image_path: fd -e jpg -e jpeg -e png . $HOME --max-depth 4 2>/dev/null --- --column 1
+$ disk_dev: diskutil list 2>/dev/null | awk '/^\/dev\// {print $1}' --- --column 1
+$ eject_vol: ls /Volumes 2>/dev/null --- --column 1
+$ app_name: ls /Applications 2>/dev/null | sed 's/\.app$//' --- --column 1
+$ network_service: networksetup -listallnetworkservices 2>/dev/null | tail -n +2 --- --column 1
+$ output_file: echo -e "$HOME/Desktop/capture.png\n$HOME/Downloads/capture.png\n/tmp/capture.png" --- --column 1
+$ seconds: echo -e "5\n10\n30\n60\n300\n3600" --- --column 1
+$ text: echo -e "done\nhello\nbuild finished\ntests passed" --- --column 1
+$ pattern: echo -e "com.apple\nhomebrew\nuser" --- --column 1

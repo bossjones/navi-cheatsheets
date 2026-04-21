@@ -1,0 +1,44 @@
+% yt-dlp, media
+
+# Download a video at best quality
+yt-dlp <url>
+
+# Download audio only (extract to mp3)
+yt-dlp -x --audio-format mp3 <url>
+
+# Download a specific format by id
+yt-dlp -f <format_id> <url>
+
+# List available formats for a URL
+yt-dlp -F <url>
+
+# Download with a custom output template
+yt-dlp -o '<template>' <url>
+
+# Download an entire playlist
+yt-dlp --yes-playlist <url>
+
+# Download playlist items in a range
+yt-dlp --playlist-items <range> <url>
+
+# Embed metadata, thumbnail, and chapters
+yt-dlp --embed-metadata --embed-thumbnail --embed-chapters <url>
+
+# Download with subtitles (auto + manual) in a language
+yt-dlp --write-sub --write-auto-sub --sub-lang <lang> --convert-subs srt <url>
+
+# Limit download rate
+yt-dlp -r <rate> <url>
+
+# Resume a partial download
+yt-dlp -c <url>
+
+# Use a cookies file (e.g. for age-gated content)
+yt-dlp --cookies <cookies_file> <url>
+
+$ format_id: echo -e "bestvideo+bestaudio/best\nbest\n137+140\nworst" --- --column 1
+$ template: echo -e "%(title)s.%(ext)s\n%(uploader)s/%(title)s.%(ext)s\n%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" --- --column 1
+$ range: echo -e "1-5\n1,3,5\n10-" --- --column 1
+$ lang: echo -e "en\nen.*\nes\nfr\nde\nja" --- --column 1
+$ rate: echo -e "500K\n1M\n2M\n5M" --- --column 1
+$ cookies_file: echo -e "~/cookies.txt\n./cookies.txt" --- --column 1

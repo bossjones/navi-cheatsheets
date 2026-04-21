@@ -1,0 +1,28 @@
+% sd, text
+
+# Replace text in a file in-place
+sd '<pattern>' '<replacement>' <file>
+
+# Replace across many files (via fd)
+fd -t f -e <ext> -x sd '<pattern>' '<replacement>'
+
+# Preview changes without writing (stdin/stdout)
+cat <file> | sd '<pattern>' '<replacement>'
+
+# Use literal strings (no regex)
+sd -s '<literal>' '<replacement>' <file>
+
+# Replace only the first match per line
+sd --preview '<pattern>' '<replacement>' <file>
+
+# Replace using a capture group
+sd '(\w+)@(\w+)' '$2/$1' <file>
+
+# Strip trailing whitespace from a file
+sd '[ \t]+$' '' <file>
+
+$ pattern: echo -e "\\bfoo\\b\n[0-9]+\n\\s+$\n[A-Z][a-z]+" --- --column 1
+$ replacement: echo -e "bar\n\nX\n\${1}" --- --column 1
+$ literal: echo -e "TODO\nFIXME\nXXX" --- --column 1
+$ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ ext: echo -e "rs\npy\nts\njs\nmd\ntxt\nyaml\njson" --- --column 1

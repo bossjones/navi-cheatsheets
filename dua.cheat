@@ -1,0 +1,29 @@
+% dua, files
+
+# Show disk usage of the current directory
+dua
+
+# Show disk usage of a specific path
+dua <path>
+
+# Interactive TUI explorer (navigate + delete)
+dua i
+
+# Interactive TUI at a specific path
+dua i <path>
+
+# Use apparent size instead of disk size
+dua --apparent-size <path>
+
+# Count hard-linked files only once
+dua --count-hard-links <path>
+
+# Use a specific number of threads
+dua -t <threads> <path>
+
+# Output in a specific byte format
+dua -f <format> <path>
+
+$ path: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ threads: echo -e "2\n4\n8\n16" --- --column 1
+$ format: echo -e "metric\nbinary\nbytes\nGB\nGiB" --- --column 1

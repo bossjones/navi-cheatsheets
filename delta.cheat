@@ -1,0 +1,37 @@
+% delta, text
+
+# Use delta as a pager for a diff between two files
+diff -u <file1> <file2> | delta
+
+# View a git diff through delta
+git diff | delta
+
+# Use delta for a specific commit
+git show <commit> | delta
+
+# Configure delta as git's pager (one-shot)
+git -c core.pager=delta diff
+
+# Side-by-side view
+git diff | delta --side-by-side
+
+# Show line numbers
+git diff | delta --line-numbers
+
+# Pick a syntax theme
+git diff | delta --syntax-theme '<theme>'
+
+# List available syntax themes
+delta --list-syntax-themes
+
+# Persist delta as the default git pager
+git config --global core.pager delta
+
+# Enable delta's built-in light/dark preset
+git config --global delta.features '<preset>'
+
+$ file1: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ file2: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ commit: git log --oneline -n 30 2>/dev/null --- --column 1
+$ theme: echo -e "Monokai Extended\nGitHub\nDracula\nNord\nOneHalfDark\nOneHalfLight\nSolarized (dark)\nSolarized (light)" --- --column 1
+$ preset: echo -e "side-by-side line-numbers decorations\nline-numbers\nside-by-side\ndecorations" --- --column 1

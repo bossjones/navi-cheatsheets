@@ -1,0 +1,33 @@
+% lunarvim, editor
+
+# Open a file in LunarVim
+lvim <file>
+
+# Open LunarVim in the current directory
+lvim .
+
+# Open multiple files as buffers
+lvim <file1> <file2>
+
+# Run LunarVim headless and execute a command
+lvim --headless -c '<ex_command>' -c 'qa'
+
+# Update LunarVim (pulls latest config)
+lvim +LvimUpdate +q
+
+# Sync plugins (install/update/clean)
+lvim +LvimSyncCorePlugins +q
+
+# Reload the user config
+lvim +LvimReload +q
+
+# Open the LunarVim config file for editing
+lvim ~/.config/lvim/config.lua
+
+# Run :checkhealth for diagnostics
+lvim +checkhealth
+
+$ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ file1: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ file2: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ ex_command: echo -e "PlugInstall\nMason\nLspInfo\nTelescope find_files" --- --column 1

@@ -1,0 +1,36 @@
+% gallery-dl, media
+
+# Download a gallery from a URL
+gallery-dl <url>
+
+# Download into a specific directory
+gallery-dl -d <dir> <url>
+
+# Use a custom config file
+gallery-dl -c <config> <url>
+
+# List supported extractors
+gallery-dl --list-extractors
+
+# Print what would be downloaded without downloading
+gallery-dl --simulate <url>
+
+# Get URLs only (no file download)
+gallery-dl -g <url>
+
+# Download a range of items from a gallery
+gallery-dl --range <range> <url>
+
+# Resume/skip already-downloaded files
+gallery-dl --no-skip <url>
+
+# Write metadata alongside each file
+gallery-dl --write-metadata <url>
+
+# Use cookies from a browser
+gallery-dl --cookies-from-browser <browser> <url>
+
+$ dir: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ config: echo -e "~/.config/gallery-dl/config.json\n./gallery-dl.conf" --- --column 1
+$ range: echo -e "1-10\n1,3,5\n-20\n50-" --- --column 1
+$ browser: echo -e "firefox\nchrome\nchromium\nsafari\nbrave\nedge" --- --column 1

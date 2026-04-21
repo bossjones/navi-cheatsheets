@@ -1,0 +1,22 @@
+% lms, sync
+
+# Copy files/directories from source to destination (parallel)
+lms copy <src> <dst>
+
+# Synchronize destination with source (mirror)
+lms sync <src> <dst>
+
+# Remove files in dst that don't exist in src
+lms remove <src> <dst>
+
+# Verbose output
+lms -v copy <src> <dst>
+
+# Use a specific number of threads
+lms --threads <threads> sync <src> <dst>
+
+; `lms sync` will mirror deletions; use `copy` instead if you want additive-only behavior.
+
+$ src: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ dst: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ threads: echo -e "2\n4\n8\n16" --- --column 1

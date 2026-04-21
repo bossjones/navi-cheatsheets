@@ -1,0 +1,31 @@
+% difftastic, text
+
+# Compare two files structurally
+difft <file1> <file2>
+
+# Compare with a specific color mode
+difft --color <mode> <file1> <file2>
+
+# Limit background/context lines
+difft --context <lines> <file1> <file2>
+
+# Force a specific language parser
+difft --language <lang> <file1> <file2>
+
+# List supported languages
+difft --list-languages
+
+# Show only the summary (no per-hunk output)
+difft --display inline <file1> <file2>
+
+# Use difftastic as git's external diff tool for one command
+GIT_EXTERNAL_DIFF=difft git diff
+
+# Configure difftastic as the permanent git difftool
+git config --global diff.external difft
+
+$ file1: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ file2: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ mode: echo -e "always\nauto\nnever" --- --column 1
+$ lines: echo -e "0\n3\n5\n10" --- --column 1
+$ lang: echo -e "Rust\nPython\nTypeScript\nJavaScript\nGo\nJSON\nYAML" --- --column 1

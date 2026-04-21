@@ -1,0 +1,33 @@
+% rustscan, network
+
+# Scan all ports on a host (fast default)
+rustscan -a <host>
+
+# Scan a specific port range
+rustscan -a <host> --range <start>-<end>
+
+# Scan an explicit list of ports
+rustscan -a <host> -p <ports>
+
+# Scan with a custom batch size (tune for your network)
+rustscan -a <host> -b <batch>
+
+# Scan and pipe open ports to nmap for service detection
+rustscan -a <host> -- -sV -sC
+
+# Greppable output (one host:port per line)
+rustscan -a <host> -g
+
+# Scan a CIDR range
+rustscan -a <cidr>
+
+# Increase timeout for slow networks (ms)
+rustscan -a <host> -t <timeout_ms>
+
+$ host: echo -e "127.0.0.1\n10.0.0.1\n192.168.1.1" --- --column 1
+$ start: echo -e "1\n1024\n8000" --- --column 1
+$ end: echo -e "1024\n65535\n9000" --- --column 1
+$ ports: echo -e "22,80,443\n80,443,8080,8443\n1-1000" --- --column 1
+$ batch: echo -e "500\n1500\n4500\n10000" --- --column 1
+$ cidr: echo -e "192.168.1.0/24\n10.0.0.0/24" --- --column 1
+$ timeout_ms: echo -e "500\n1500\n3000\n5000" --- --column 1

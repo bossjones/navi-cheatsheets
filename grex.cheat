@@ -1,0 +1,25 @@
+% grex, text
+
+# Build a regex from one or more example strings
+grex <samples>
+
+# Build a regex from a file (one sample per line)
+grex -f <file>
+
+# Produce a case-insensitive regex
+grex -i <samples>
+
+# Match whole lines only (anchor with ^ and $)
+grex --anchors <samples>
+
+# Convert digits to \d, whitespace to \s, word chars to \w
+grex -d -s -w <samples>
+
+# Escape non-ASCII characters to their unicode form
+grex -e <samples>
+
+# Emit verbose (extended) regex with comments
+grex --verbose <samples>
+
+$ samples: echo -e "abc123\nabc456\nabc789" --- --column 1
+$ file: fd --type f --max-depth 3 2>/dev/null --- --column 1

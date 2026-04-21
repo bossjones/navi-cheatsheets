@@ -1,0 +1,25 @@
+% bandwhich, network
+
+# Watch bandwidth on all interfaces
+sudo bandwhich
+
+# Watch bandwidth on a specific interface
+sudo bandwhich --interface <iface>
+
+# Show raw bytes instead of human-readable units
+sudo bandwhich --raw
+
+# Disable reverse DNS lookups (faster, shows raw IPs)
+sudo bandwhich --no-resolve
+
+; bandwhich must run as root to capture packets on most systems
+
+# Dump totals for N seconds then exit (non-interactive)
+sudo bandwhich --raw | head -n <lines>
+
+# Log to a file while watching
+sudo bandwhich --raw | tee <file>
+
+$ iface: ifconfig -l 2>/dev/null | tr ' ' '\n' --- --column 1
+$ lines: echo -e "50\n100\n500\n1000" --- --column 1
+$ file: echo -e "/tmp/bandwhich.log\n./bandwhich.log" --- --column 1

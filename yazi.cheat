@@ -1,0 +1,29 @@
+% yazi, files
+
+# Open yazi in the current directory
+yazi
+
+# Open yazi at a specific path
+yazi <path>
+
+# Open yazi and write the chosen path on exit to a file (for shell wrappers)
+yazi --chooser-file <file>
+
+# Clear the yazi cache
+yazi --clear-cache
+
+# Print yazi's version
+yazi --version
+
+; Install yazi keybinding helper in your shell (wrapper function that cd's
+; into the directory selected when yazi exits):
+;   function ya() {
+;     local tmp=$(mktemp)
+;     yazi --chooser-file "$tmp" "$@"
+;     local cwd=$(cat "$tmp")
+;     [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd "$cwd"
+;     rm -f "$tmp"
+;   }
+
+$ path: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ file: echo -e "/tmp/yazi-cwd\n/tmp/yazi-chosen" --- --column 1

@@ -1,0 +1,28 @@
+% gping, network
+
+# Ping a single host with a live graph
+gping <host>
+
+# Ping multiple hosts on the same graph
+gping <host1> <host2>
+
+# Ping with a custom buffer (seconds of history shown)
+gping --buffer <seconds> <host>
+
+# Ping at a custom interval (seconds between pings)
+gping --watch-interval <seconds> <host>
+
+# Ping the command's execution time instead of a host
+gping --cmd <command>
+
+# Ping with IPv4 only
+gping -4 <host>
+
+# Ping with IPv6 only
+gping -6 <host>
+
+$ host: echo -e "1.1.1.1\n8.8.8.8\ngoogle.com\ngithub.com" --- --column 1
+$ host1: echo -e "1.1.1.1\n8.8.8.8\ngoogle.com\ngithub.com" --- --column 1
+$ host2: echo -e "1.1.1.1\n8.8.8.8\ngoogle.com\ngithub.com" --- --column 1
+$ seconds: echo -e "10\n30\n60\n120\n300" --- --column 1
+$ command: echo -e "curl -s https://example.com\nls -la\nuptime" --- --column 1

@@ -1,0 +1,35 @@
+% procs, process
+
+# List all processes
+procs
+
+# Filter processes by a keyword (name, command, user, etc.)
+procs <keyword>
+
+# Watch processes (live refresh)
+procs --watch
+
+# Watch at a custom refresh interval (seconds)
+procs --watch-interval <seconds>
+
+# Tree view of processes
+procs --tree
+
+# Include thread info
+procs --thread
+
+# Sort by a column (e.g. CPU, MEM, TIME)
+procs --sorta <column>
+
+# Show processes listening on TCP ports
+procs --tcp
+
+# Show processes listening on UDP ports
+procs --udp
+
+# Insert extra columns
+procs --insert <column>
+
+$ keyword: echo -e "ssh\nnode\npython\nruby\ndocker" --- --column 1
+$ seconds: echo -e "1\n2\n5\n10" --- --column 1
+$ column: echo -e "CPU\nMEM\nTIME\nPID\nUser\nCommand" --- --column 1

@@ -1,0 +1,37 @@
+% tmux, terminal
+
+# Start a new named session
+tmux new -s <session>
+
+# Attach to an existing session
+tmux attach -t <session>
+
+# List sessions
+tmux ls
+
+# Kill a specific session
+tmux kill-session -t <session>
+
+# Kill the tmux server (all sessions)
+tmux kill-server
+
+# Rename the current session
+tmux rename-session -t <old> <new>
+
+# Create a detached session running a command
+tmux new -d -s <session> '<command>'
+
+# Send keys to a running session (e.g. run a command in it)
+tmux send-keys -t <session> '<command>' Enter
+
+# Capture the visible pane to a file
+tmux capture-pane -pt <session> > <file>
+
+# Source tmux config without restart
+tmux source-file ~/.tmux.conf
+
+$ session: tmux ls 2>/dev/null | cut -d: -f1 --- --column 1
+$ old: tmux ls 2>/dev/null | cut -d: -f1 --- --column 1
+$ new: echo -e "dev\nwork\nscratch\nmain" --- --column 1
+$ command: echo -e "htop\nvim\nbtop\nlogs\nmake test" --- --column 1
+$ file: echo -e "/tmp/tmux-capture.txt\n./pane.log" --- --column 1

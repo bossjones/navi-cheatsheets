@@ -1,0 +1,37 @@
+% getnf, fonts
+
+# Launch the interactive Nerd Fonts menu
+getnf
+
+# Launch with fzf fuzzy-finder font picker
+getnf -f
+
+# List all locally installed Nerd Fonts
+getnf -l
+
+# List all available Nerd Fonts from the upstream repository
+getnf -L
+
+# Install a specific Nerd Font
+getnf -i <font>
+
+# Install multiple Nerd Fonts at once
+getnf -i <fonts>
+
+# Uninstall a specific Nerd Font
+getnf -u <font>
+
+# Update all currently installed Nerd Fonts
+getnf -U
+
+# Install a font system-wide for all users
+getnf -g -i <font>
+
+# Keep downloaded font archives after installation
+getnf -k -i <font>
+
+# Refresh the system font cache after installation
+fc-cache -f
+
+$ font: echo -e "FiraCode\nJetBrainsMono\nMeslo\nHack\nUbuntuMono\nSourceCodePro\nNoto\nZedMono\nCascadiaCode" --- --column 1
+$ fonts: echo -e "FiraCode,JetBrainsMono\nMeslo,Hack\nFiraCode,Noto" --- --column 1

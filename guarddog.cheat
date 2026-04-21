@@ -1,0 +1,51 @@
+% guarddog, security
+
+# Scan the latest version of a PyPI package for malicious indicators
+guarddog pypi scan <package>
+
+# Scan a specific version of a PyPI package
+guarddog pypi scan <package> --version <version>
+
+# Verify all packages listed in a requirements file
+guarddog pypi verify <file>
+
+# Scan using only specific heuristic rules
+guarddog pypi scan <package> --rules <rule>
+
+# Scan while excluding a specific heuristic rule
+guarddog pypi scan <package> --exclude-rules <rule>
+
+# Output scan results as JSON
+guarddog pypi verify <file> --output-format=json
+
+# Output scan results as SARIF for GitHub integration
+guarddog pypi verify <file> --output-format=sarif
+
+# Scan an npm package
+guarddog npm scan <package>
+
+# Verify an npm lockfile
+guarddog npm verify <file>
+
+# Scan a Go module
+guarddog go scan <path>
+
+# Verify Go module dependencies
+guarddog go verify <file>
+
+# Scan a RubyGems package
+guarddog rubygems scan <package>
+
+# Scan a GitHub Action for malicious behavior
+guarddog github_action scan <owner_repo>
+
+# Scan a VSCode extension
+guarddog extension scan <extension_id>
+
+$ package: echo -e "requests\nflask\ndjango\nexpress\nlodash\nnumpy\nsetuptools" --- --column 1
+$ version: echo -e "latest\n1.0.0\n2.0.0\n2.28.1" --- --column 1
+$ file: fd --type f --name 'requirements*.txt' 2>/dev/null; fd --type f --name 'package-lock.json' 2>/dev/null; fd --type f --name 'go.mod' 2>/dev/null --- --column 1
+$ path: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ rule: echo -e "exec-base64\ncode-execution\ndownload-executable\nexfiltrate-sensitive-data\nobfuscation\nshady-links" --- --column 1
+$ owner_repo: echo -e "DataDog/synthetics-ci-github-action\nactions/checkout\nactions/setup-python" --- --column 1
+$ extension_id: echo -e "ms-python.python\nms-vscode.go\nrustlang.rust-analyzer" --- --column 1

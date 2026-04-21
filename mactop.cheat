@@ -1,25 +1,44 @@
-% mactop, process
+% mactop, system
 
-# Launch mactop (usually requires root)
+# Launch mactop with default settings
 mactop
 
-# Launch mactop with sudo
-sudo mactop
+# Launch with a custom update interval in milliseconds
+mactop --interval <interval_ms>
 
-# Refresh at a custom interval (milliseconds)
-sudo mactop --interval <interval>
+# Launch with a custom foreground color
+mactop --foreground <color>
 
-# Use a specific UI color
-sudo mactop --color <color>
+# Enable Prometheus metrics endpoint on a port
+mactop --prometheus <port>
 
-# Run without the TUI (print metrics to stdout)
-sudo mactop --no-ui
+# Run in headless mode, streaming metrics to stdout
+mactop --headless
 
-# Show help
-sudo mactop --help
+# Run headless once and exit immediately
+mactop --headless --count 1
 
-# Show version
-sudo mactop --version
+# Run headless with pretty-printed JSON output
+mactop --headless --pretty
 
-$ interval: echo -e "500\n1000\n2000\n5000" --- --column 1
-$ color: echo -e "green\nblue\ncyan\nmagenta\nyellow\nred\nwhite" --- --column 1
+# Run headless with a specific output format
+mactop --headless --format <format>
+
+# Set the network metrics display unit
+mactop --unit-network <unit>
+
+# Set the temperature display unit
+mactop --unit-temp <temp_unit>
+
+# Run as a macOS menu bar status item
+mactop --menubar
+
+# Enable interactive fan speed control
+mactop --fan-control
+
+$ interval_ms: echo -e "500\n1000\n2000\n5000" --- --column 1
+$ color: echo -e "green\nred\nblue\nmagenta\nyellow\ncyan\nwhite" --- --column 1
+$ port: echo -e "2112\n9090\n8080" --- --column 1
+$ format: echo -e "json\nyaml\nxml\ncsv\ntoon" --- --column 1
+$ unit: echo -e "auto\nbyte\nkb\nmb\ngb" --- --column 1
+$ temp_unit: echo -e "celsius\nfahrenheit" --- --column 1

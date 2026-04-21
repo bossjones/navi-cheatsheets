@@ -1,0 +1,60 @@
+% playwright-cli, browser
+
+# Open a browser and navigate to a URL (headless by default)
+playwright-cli open <url>
+
+# Open a browser with the UI visible
+playwright-cli open <url> --headed
+
+# Capture a snapshot of the current page state
+playwright-cli snapshot
+
+# Click an element by selector or reference
+playwright-cli click <ref>
+
+# Fill a form field with text
+playwright-cli fill <ref> <text>
+
+# Type text into the focused element
+playwright-cli type <text>
+
+# Press a keyboard key
+playwright-cli press <key>
+
+# Take a screenshot of the current page
+playwright-cli screenshot --filename <file>
+
+# Export the current page as a PDF
+playwright-cli pdf --filename <file>
+
+# Navigate back in browser history
+playwright-cli go-back
+
+# Reload the current page
+playwright-cli reload
+
+# Set a cookie for the current session
+playwright-cli cookie-set <name> <val>
+
+# Set a localStorage key for the current session
+playwright-cli localstorage-set <name> <val>
+
+# Save current browser state (cookies, storage) to file
+playwright-cli state-save <file>
+
+# Load a previously saved browser state
+playwright-cli state-load <file>
+
+# List all active browser sessions
+playwright-cli list
+
+# Open the visual dashboard for active sessions
+playwright-cli show
+
+$ url: echo -e "https://example.com\nhttps://github.com\nhttp://localhost:3000\nhttp://localhost:8000" --- --column 1
+$ ref: echo -e "button\ninput\n#submit\n.form-field\n[data-testid=login]" --- --column 1
+$ text: echo -e "hello world\ntest input\nuser@example.com" --- --column 1
+$ key: echo -e "Enter\nTab\nEscape\nArrowDown\nArrowUp\nSpace" --- --column 1
+$ file: echo -e "screenshot.png\npage.pdf\nstate.json" --- --column 1
+$ name: echo -e "session\nauth-token\nuser-id" --- --column 1
+$ val: echo -e "changeme\ntoken123\nexample-value" --- --column 1

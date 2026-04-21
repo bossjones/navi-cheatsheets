@@ -1,0 +1,45 @@
+% wtp, git
+
+# Add a worktree from an existing local or remote branch
+wtp add <branch>
+
+# Add a worktree and create a new branch
+wtp add -b <branch>
+
+# Add a worktree from a specific commit
+wtp add -b <branch> <commit>
+
+# Add a worktree and run a setup command inside it
+wtp add <branch> --exec "<command>"
+
+# Add a worktree and print only the resulting path (for scripting)
+wtp add -b <branch> --quiet
+
+# List all current worktrees with branch, HEAD, and path
+wtp list
+
+# Remove a worktree while keeping its branch
+wtp remove <branch>
+
+# Force-remove a worktree that has uncommitted changes
+wtp remove --force <branch>
+
+# Remove a worktree and delete its merged branch
+wtp remove --with-branch <branch>
+
+# Change directory to a worktree (requires shell integration)
+wtp cd <branch>
+
+# Change directory back to the main worktree
+wtp cd
+
+# Execute a command inside a specific worktree
+wtp exec <branch> -- <command>
+
+# Initialize shell integration for navigation
+wtp shell-init <shell>
+
+$ branch: git branch --format='%(refname:short)' 2>/dev/null --- --column 1
+$ commit: git log --oneline -n 30 2>/dev/null --- --column 1
+$ command: echo -e "npm install\nbundle install\npip install -e .\nmake setup" --- --column 1
+$ shell: echo -e "zsh\nbash\nfish" --- --column 1

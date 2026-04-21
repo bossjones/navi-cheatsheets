@@ -1,0 +1,37 @@
+% eget, package
+
+# Install the latest release of a GitHub project
+eget <owner_repo>
+
+# Install a specific tagged release
+eget <owner_repo> --tag <tag>
+
+# Install binary to a specific directory
+eget <owner_repo> --to <path>
+
+# Target a specific OS/architecture
+eget --system <system> <owner_repo>
+
+# Extract a specific file from the release asset
+eget -f <asset_pattern> <owner_repo>
+
+# Download without extracting
+eget --download-only <owner_repo>
+
+# Only download if a newer version exists upstream
+eget --upgrade-only <owner_repo>
+
+# Include pre-release versions when resolving latest
+eget --pre-release <owner_repo>
+
+# Extract all files matching a pattern from the release
+eget --all <owner_repo>
+
+# Check remaining GitHub API rate limit
+eget --rate
+
+$ owner_repo: echo -e "zyedidia/micro\njunegunn/fzf\nsharkdp/fd\nneovim/neovim\ndanstiner/delta\nBurntSushi/ripgrep" --- --column 1
+$ tag: echo -e "latest\nnightly\nv1.0.0\nv2.0.0" --- --column 1
+$ path: echo -e "/usr/local/bin\n~/.local/bin\n/opt/bin" --- --column 1
+$ system: echo -e "darwin/arm64\ndarwin/amd64\nlinux/amd64\nlinux/arm64\nwindows/amd64" --- --column 1
+$ asset_pattern: echo -e "*.tar.gz\n*.zip\n*.AppImage" --- --column 1

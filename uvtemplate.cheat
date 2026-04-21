@@ -1,0 +1,33 @@
+% uvtemplate, dev
+
+# Create a new Python project interactively
+uvx uvtemplate create
+
+# Create a project non-interactively in a named directory
+uvx uvtemplate --yes --destination <dir>
+
+# Create a project with package metadata set non-interactively
+uvx uvtemplate --yes --destination <dir> --data package_name=<name> --data package_description=<desc>
+
+# Create a project skipping git and GitHub initialization
+uvx uvtemplate create --skip-git
+
+# Migrate an existing project to the uvtemplate structure
+uvx uvtemplate migrate
+
+# Update a uvtemplate-based project to the latest template version
+uvx uvtemplate update --yes
+
+# Create as a public GitHub repository (default is private)
+uvx uvtemplate --yes --destination <dir> --public
+
+# Create from a saved answers file
+uvx uvtemplate --answers-file <file> create
+
+# Print uvtemplate documentation
+uvx uvtemplate readme
+
+$ dir: echo -e "my-project\nnew-package\ncli-tool\nmy-lib" --- --column 1
+$ name: echo -e "my-package\ncli-tool\nmy-lib" --- --column 1
+$ desc: echo -e "A useful command-line tool\nMy Python package\nA CLI application" --- --column 1
+$ file: fd --type f --name '.copier-answers.yml' 2>/dev/null --- --column 1

@@ -1,0 +1,40 @@
+% adt, devops
+
+# Show versions of all bundled Ansible developer tools
+adt --version
+
+# Install ansible-dev-tools via pip
+pip install ansible-dev-tools
+
+# Install ansible-dev-tools via uv
+uv tool install ansible-dev-tools
+
+# Launch the ansible-creator REST API server
+adt server
+
+# Lint an Ansible playbook or role
+ansible-lint <file>
+
+# Scaffold a new Ansible project with best practices
+ansible-creator
+
+# Launch text UI for developing and running Ansible content
+ansible-navigator
+
+# Build an Ansible execution environment container image
+ansible-builder build
+
+# Run Molecule integration tests for an Ansible role
+molecule test
+
+# Run Molecule tests in a named scenario
+molecule test --scenario-name <scenario>
+
+# Show the installed ansible-core version
+ansible --version
+
+# Run ansible-dev-tools in a container
+podman run ghcr.io/ansible/community-ansible-dev-tools:latest adt --version
+
+$ file: fd --type f --name '*.yml' 2>/dev/null --- --column 1
+$ scenario: echo -e "default\nci\nintegration" --- --column 1

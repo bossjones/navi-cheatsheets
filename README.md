@@ -2,6 +2,53 @@
 
 [Navi](https://github.com/denisidoro/navi) cheat sheets by bossjones.
 
+## Quick Start
+
+Install [navi](https://github.com/denisidoro/navi#installation), then add this repo in one command:
+
+```sh
+navi repo add bossjones/navi-cheatsheets
+```
+
+Launch navi and start searching:
+
+```sh
+navi
+```
+
+To preview all snippets from this repo without modifying your global install:
+
+```sh
+navi --path /path/to/navi-cheatsheets
+```
+
+## Configuration
+
+Navi reads `~/.config/navi/config.yaml` (override with `$NAVI_CONFIG`).  
+Cheatsheet directories are taken from `$NAVI_PATH` or the `cheats.paths` list in the config file.
+
+Suggested config block:
+
+```yaml
+cheats:
+  paths:
+    - ~/.local/share/navi/cheats          # default community cheats (navi repo add …)
+    - ~/dev/bossjones/navi-cheatsheets    # this repo, if cloned locally
+
+style:
+  tag:
+    color: blue
+  comment:
+    color: white
+  snippet:
+    color: green
+
+finder:
+  overrides: "--height 60% --layout=reverse --border"
+```
+
+> **Tip:** Run `navi info cheats-path` to print the directories navi is currently searching.
+
 ## Tools
 
 | Tool | Description | Link | Cheatsheet |

@@ -1,0 +1,33 @@
+% dnstop, network
+
+# Sniff DNS traffic on an interface
+sudo dnstop <interface>
+
+# Sniff DNS with full filter expression (only show queries)
+sudo dnstop -Q <interface>
+
+# Sniff DNS with full filter expression (only show replies)
+sudo dnstop -R <interface>
+
+# Show only IPv4 queries on an interface
+sudo dnstop -4 <interface>
+
+# Show only IPv6 queries on an interface
+sudo dnstop -6 <interface>
+
+# Read DNS queries from a pcap capture file
+sudo dnstop <pcap_file>
+
+# Limit captured-name depth (number of labels shown)
+sudo dnstop -l <label_count> <interface>
+
+# Display N rows per table
+sudo dnstop -r <row_count> <interface>
+
+# Read pcap file with only query packets
+sudo dnstop -Q <pcap_file>
+
+$ interface: echo -e "en0\nen1\neth0\neth1\nwlan0\nlo0\nany" --- --column 1
+$ pcap_file: fd --type f --extension pcap --max-depth 4 2>/dev/null --- --column 1
+$ label_count: echo -e "2\n3\n4\n5" --- --column 1
+$ row_count: echo -e "10\n20\n50\n100" --- --column 1

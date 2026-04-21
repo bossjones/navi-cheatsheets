@@ -1,0 +1,35 @@
+% http-prompt, network
+
+# Start interactive session against a base URL
+http-prompt <base_url>
+
+# Start session with default local server
+http-prompt http://localhost:<port>
+
+# Start session with a default header
+http-prompt <base_url> <header_name>:<header_value>
+
+# Start session with a bearer token header
+http-prompt <base_url> "Authorization:Bearer <token>"
+
+# Start session with a querystring parameter persisted
+http-prompt <base_url> <query_key>==<query_value>
+
+# Start session with a JSON body field persisted
+http-prompt <base_url> <body_key>=<body_value>
+
+# Print the http-prompt version
+http-prompt --version
+
+# Print the help message
+http-prompt --help
+
+$ base_url: echo -e "http://localhost:8000\nhttp://127.0.0.1:5000\nhttps://httpbin.org\nhttps://api.github.com\nhttps://jsonplaceholder.typicode.com" --- --column 1
+$ port: echo -e "3000\n5000\n8000\n8080\n9000" --- --column 1
+$ header_name: echo -e "Authorization\nAccept\nContent-Type\nUser-Agent\nX-Api-Key" --- --column 1
+$ header_value: echo -e "application/json\napplication/xml\ntext/plain\ngzip" --- --column 1
+$ token: echo -e "changeme\nCHANGE_ME_TOKEN" --- --column 1
+$ query_key: echo -e "page\nlimit\nq\nid\nsort" --- --column 1
+$ query_value: echo -e "1\n10\n100\nasc\ndesc" --- --column 1
+$ body_key: echo -e "name\nemail\npassword\ntitle\nbody" --- --column 1
+$ body_value: echo -e "test\nexample\nfoo\nbar" --- --column 1

@@ -1,0 +1,43 @@
+% rg, text
+
+# Recursively search for a pattern from the current directory
+rg <pattern>
+
+# Case-insensitive search
+rg -i <pattern>
+
+# Match whole words only
+rg -w <pattern>
+
+# Restrict search to a file type (py, js, go, ...)
+rg -t <type> <pattern>
+
+# List files ripgrep would search (respects ignores)
+rg --files
+
+# Print only filenames that contain a match
+rg -l <pattern>
+
+# Show N lines of context around each match
+rg -C <context> <pattern>
+
+# Limit search to a glob (include/exclude)
+rg -g '<glob>' <pattern>
+
+# Include hidden files and directories
+rg --hidden <pattern>
+
+# Ignore .gitignore/.ignore files (search everything)
+rg --no-ignore <pattern>
+
+# Emit machine-readable JSON events
+rg --json <pattern>
+
+# Generate shell completion script
+rg --generate complete-<shell>
+
+$ pattern: echo -e "TODO\nFIXME\nimport\nfunction\nerror" --- --column 1
+$ type: echo -e "py\njs\nts\ngo\nrust\nmd\njson\nyaml\nsh" --- --column 1
+$ context: echo -e "1\n2\n3\n5\n10" --- --column 1
+$ glob: echo -e "*.md\n*.py\n*.js\n!node_modules\nsrc/**" --- --column 1
+$ shell: echo -e "bash\nzsh\nfish\npowershell" --- --column 1

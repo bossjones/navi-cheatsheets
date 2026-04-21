@@ -1,0 +1,41 @@
+% fd, files
+
+# Find files/dirs whose name matches a pattern
+fd <pattern>
+
+# Find only regular files
+fd --type f <pattern>
+
+# Find only directories
+fd --type d <pattern>
+
+# Find files with a given extension
+fd --extension <ext>
+
+# Include hidden files/directories
+fd --hidden <pattern>
+
+# Ignore .gitignore/.fdignore rules (search everything)
+fd --no-ignore <pattern>
+
+# Execute a command against each match
+fd --type f <pattern> --exec <cmd> {}
+
+# Filter by file size (e.g. +100M, -10k)
+fd --type f --size <size>
+
+# Only files changed within a duration
+fd --changed-within <duration>
+
+# Limit recursion depth
+fd --max-depth <depth> <pattern>
+
+# Print absolute paths
+fd --absolute-path <pattern>
+
+$ pattern: echo -e ".*\\.py$\nREADME\nconfig\n.*\\.lock$" --- --column 1
+$ ext: echo -e "py\njs\nts\ngo\nrs\nmd\njson\nyaml\ntoml" --- --column 1
+$ cmd: echo -e "bat\nwc -l\nfile\nrm -i\nls -la" --- --column 1
+$ size: echo -e "+1M\n+10M\n+100M\n-1k\n+1G" --- --column 1
+$ duration: echo -e "1h\n1d\n1week\n2weeks\n1month" --- --column 1
+$ depth: echo -e "1\n2\n3\n4\n5" --- --column 1

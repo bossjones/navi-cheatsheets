@@ -1,0 +1,37 @@
+% pv, files
+
+# Pipe a file through pv to show progress
+pv <file>
+
+# Copy a file while showing progress
+pv <file> > <output>
+
+# Measure throughput of any pipeline
+cat <file> | pv > <output>
+
+# Rate limit data flow
+pv -L <rate> <file>
+
+# Provide known total size for accurate progress
+pv -s <size> <file>
+
+# Show only a progress bar
+pv -p <file>
+
+# Show elapsed timer
+pv -t <file>
+
+# Show estimated time remaining
+pv -e <file>
+
+# Show bytes transferred
+pv -b <file>
+
+# Label the pv output with a name
+pv -N '<name>' <file>
+
+$ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ output: echo -e "/tmp/out.bin\n/tmp/copy.dat\n/dev/null" --- --column 1
+$ rate: echo -e "1M\n10M\n100K\n500K\n1G" --- --column 1
+$ size: echo -e "1M\n10M\n100M\n1G\n10G" --- --column 1
+$ name: echo -e "copy\nbackup\nwrite\ntransfer" --- --column 1

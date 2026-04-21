@@ -1,0 +1,31 @@
+% pstree, process
+
+# Show the full process tree
+pstree
+
+# Show tree rooted at a specific PID
+pstree <pid>
+
+# Show PIDs in the tree
+pstree -p
+
+# Show only processes owned by a user
+pstree -u <user>
+
+# Show command-line arguments
+pstree -a
+
+# Sort children by PID
+pstree -n
+
+# Don't truncate long lines
+pstree -l
+
+# Use ASCII characters (no Unicode box drawing)
+pstree -A
+
+# Common combo: PIDs plus arguments
+pstree -p -a
+
+$ pid: pgrep -l . | awk '{print $1}' --- --column 1
+$ user: echo -e "$(whoami)\nroot" --- --column 1

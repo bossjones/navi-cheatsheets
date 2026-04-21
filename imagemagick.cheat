@@ -1,0 +1,43 @@
+% magick, media
+
+# Convert an image to another format
+magick <input> <output>
+
+# Resize an image to given dimensions
+magick <input> -resize <dim> <output>
+
+# Set JPEG quality
+magick <input> -quality <quality> <output>
+
+# Rotate an image by degrees
+magick <input> -rotate <degrees> <output>
+
+# Crop an image with a geometry spec
+magick <input> -crop <geom> <output>
+
+# Strip metadata (EXIF, profiles)
+magick <input> -strip <output>
+
+# Show image info (dimensions, format, depth)
+magick identify <input>
+
+# Build an animated GIF from frames
+magick <input_glob> <output_gif>
+
+# Create a montage grid from multiple images
+magick montage <input_glob> -tile <tile> -geometry <geom> <output>
+
+# Create a solid color canvas
+magick -size <size> xc:<color> <output>
+
+$ input: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ input_glob: echo -e "*.png\n*.jpg\nframe_*.png" --- --column 1
+$ output: echo -e "out.png\nout.jpg\nout.webp" --- --column 1
+$ output_gif: echo -e "out.gif\nanim.gif" --- --column 1
+$ dim: echo -e "50%\n800x600\n1920x\nx1080" --- --column 1
+$ quality: echo -e "70\n80\n85\n90\n95" --- --column 1
+$ degrees: echo -e "90\n180\n270" --- --column 1
+$ geom: echo -e "100x100+0+0\n+2+2\n800x600" --- --column 1
+$ tile: echo -e "2x2\n3x3\n4x4\n5x1" --- --column 1
+$ size: echo -e "100x100\n800x600\n1920x1080" --- --column 1
+$ color: echo -e "white\nblack\nred\nblue\ntransparent" --- --column 1

@@ -1,0 +1,39 @@
+% ffmpeg, media
+
+# Show media file info
+ffmpeg -i <input>
+
+# Convert a media file to another format
+ffmpeg -i <input> <output>
+
+# Remux container without re-encoding streams
+ffmpeg -i <input> -c:v copy -c:a copy <output>
+
+# Extract audio track (copy codec, no video)
+ffmpeg -i <input> -vn -acodec copy <output_audio>
+
+# Trim from start for a given duration
+ffmpeg -i <input> -ss <start> -t <duration> <output>
+
+# Resize video keeping aspect ratio
+ffmpeg -i <input> -vf scale=<width>:-1 <output>
+
+# Re-encode with x264 using CRF and preset
+ffmpeg -i <input> -crf <crf> -preset <preset> <output>
+
+# Change video framerate
+ffmpeg -i <input> -r <fps> <output>
+
+# Create an animated GIF from video
+ffmpeg -i <input> -filter:v "fps=<fps>,scale=<width>:-1" <output_gif>
+
+$ input: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ output: echo -e "out.mp4\nout.mkv\nout.webm\nout.mov" --- --column 1
+$ output_audio: echo -e "audio.m4a\naudio.mp3\naudio.aac\naudio.opus" --- --column 1
+$ output_gif: echo -e "out.gif\npreview.gif" --- --column 1
+$ start: echo -e "00:00:05\n00:00:10\n00:00:30\n00:01:00" --- --column 1
+$ duration: echo -e "5\n10\n30\n60" --- --column 1
+$ width: echo -e "640\n720\n1280\n1920" --- --column 1
+$ fps: echo -e "15\n24\n30\n60" --- --column 1
+$ crf: echo -e "18\n20\n23\n28" --- --column 1
+$ preset: echo -e "ultrafast\nveryfast\nfast\nmedium\nslow\nveryslow" --- --column 1

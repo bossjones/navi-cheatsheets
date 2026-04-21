@@ -1,0 +1,31 @@
+% fastfetch, process
+
+# Show system info with default config
+fastfetch
+
+# Use a specific config preset
+fastfetch --config <config>
+
+# Use a named built-in logo
+fastfetch --logo <logo>
+
+# Choose the logo source type
+fastfetch --logo-type <type>
+
+# Only show selected modules
+fastfetch --structure <structure>
+
+# Control output format
+fastfetch --format <format>
+
+# Generate a default config file
+fastfetch --gen-config
+
+# List all available modules
+fastfetch --list-modules
+
+$ config: echo -e "neofetch\npaleofetch\nall\nexamples/1\nexamples/2" --- --column 1
+$ logo: echo -e "macos\nlinux\nubuntu\narch\nfedora\ndebian\nnone" --- --column 1
+$ type: echo -e "builtin\nfile\ndata\nnone" --- --column 1
+$ structure: echo -e "Title:OS:Host:Kernel:Uptime:Shell:CPU:Memory\nOS:Kernel:Uptime\nTitle:OS:CPU:GPU:Memory\nTitle:Separator:OS:Host:Kernel:Uptime:Packages:Shell:Terminal:CPU:GPU:Memory:Disk:LocalIP:Battery:Locale" --- --column 1
+$ format: echo -e "default\njson" --- --column 1

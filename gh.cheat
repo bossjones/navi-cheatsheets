@@ -1,0 +1,50 @@
+% gh, git
+
+# Authenticate with GitHub
+gh auth login
+
+# Show current auth status
+gh auth status
+
+# Clone a GitHub repo
+gh repo clone <repo>
+
+# Create a new repo on GitHub
+gh repo create <name>
+
+# Open the current repo in a browser
+gh repo view --web
+
+# List pull requests
+gh pr list
+
+# Create a pull request
+gh pr create --title <title> --body <body>
+
+# View a pull request
+gh pr view <number>
+
+# Check out a pull request locally
+gh pr checkout <number>
+
+# List issues
+gh issue list
+
+# Create an issue
+gh issue create --title <title>
+
+# List recent workflow runs
+gh run list
+
+# Watch a workflow run until completion
+gh run watch
+
+# Generate shell completions
+gh completion --shell <shell>
+
+$ repo: echo -e "owner/repo\ncli/cli\ngit/git" --- --column 1
+$ name: echo -e "my-repo\nnew-project\ntest-repo" --- --column 1
+$ title: echo -e "Fix bug\nAdd feature\nUpdate docs" --- --column 1
+$ body: echo -e "Fixes issue\nInitial implementation\nWIP" --- --column 1
+$ number: echo -e "1\n2\n3\n10\n42" --- --column 1
+$ shell: echo -e "bash\nzsh\nfish\npowershell" --- --column 1

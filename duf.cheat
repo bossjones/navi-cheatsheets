@@ -1,0 +1,35 @@
+% duf, files
+
+# Show disk usage of all mounted filesystems
+duf
+
+# Show usage for a specific path
+duf <path>
+
+# Only show local devices
+duf --only local
+
+# Filter by filesystem type
+duf --only-fs <fs>
+
+# Hide a category from output
+duf --hide <category>
+
+# Output as JSON
+duf --json
+
+# Sort by a column
+duf --sort <column>
+
+# Use a specific theme
+duf --theme <theme>
+
+# Choose which columns to display
+duf --output <columns>
+
+$ path: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ fs: echo -e "apfs\next4\nxfs\nbtrfs\nzfs\nnfs" --- --column 1
+$ category: echo -e "local\nnetwork\nfuse\nspecial\nloops\nbinds" --- --column 1
+$ column: echo -e "mountpoint\nsize\nused\navail\nusage" --- --column 1
+$ theme: echo -e "light\ndark\nansi" --- --column 1
+$ columns: echo -e "mountpoint,size,used\nmountpoint,size,used,avail,usage\nmountpoint,type,size,used,avail" --- --column 1

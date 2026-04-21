@@ -1,0 +1,46 @@
+% vim, editor
+
+# Open a file in Vim
+vim <file>
+
+# Open a file at a specific line
+vim +<line> <file>
+
+# Open a file at the first match of a pattern
+vim +/<pattern> <file>
+
+# Open a file in read-only mode
+vim -R <file>
+
+# Open two files in horizontal splits
+vim -o <file1> <file2>
+
+# Open two files in vertical splits
+vim -O <file1> <file2>
+
+# Open multiple files in tabs
+vim -p <file1> <file2>
+
+# Diff two files
+vim -d <file1> <file2>
+
+# Run an ex command on open
+vim -c '<command>' <file>
+
+# Use a custom vimrc
+vim -u <vimrc> <file>
+
+# Start with no vimrc or plugins
+vim --clean <file>
+
+# Profile startup time to a log file
+vim --startuptime <log> <file>
+
+$ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ file1: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ file2: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ line: echo -e "1\n50\n100\n500" --- --column 1
+$ pattern: echo -e "TODO\nFIXME\nfunction\nclass" --- --column 1
+$ command: echo -e "set number\nset paste\nset spell\nset nowrap" --- --column 1
+$ vimrc: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ log: echo -e "vim-startup.log\n/tmp/vim-startup.log" --- --column 1

@@ -1,0 +1,28 @@
+% retry, terminal
+
+# Retry a command until it succeeds
+retry <command>
+
+# Retry a command up to N times
+retry --times <count> <command>
+
+# Wait N seconds between attempts
+retry --delay <seconds> <command>
+
+# Abort if total runtime exceeds N seconds
+retry --max-time <seconds> <command>
+
+# Retry until output matches a pattern
+retry --until <pattern> <command>
+
+# Retry only on a specific exit code
+retry --on-error <code> <command>
+
+# Combine attempts, delay, and total time cap
+retry --times <count> --delay <seconds> --max-time <seconds> <command>
+
+$ command: echo -e "curl http://localhost:8080\nnpm test\ncargo build" --- --column 1
+$ count: echo -e "3\n5\n10" --- --column 1
+$ seconds: echo -e "1\n5\n10\n30\n60" --- --column 1
+$ pattern: echo -e "OK\nsuccess\nready\nhealthy" --- --column 1
+$ code: echo -e "1\n2\n7\n22" --- --column 1

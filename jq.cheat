@@ -1,0 +1,35 @@
+% jq, text
+
+# Pretty-print a JSON file
+jq '.' <json_file>
+
+# Extract a single top-level field
+jq '.<key>' <json_file>
+
+# Extract a value as raw text (no quotes)
+jq -r '.<key>' <json_file>
+
+# List top-level keys of an object
+jq 'keys' <json_file>
+
+# Iterate an array and pull a field from each item
+jq '.[] | .<key>' <json_file>
+
+# Count the number of elements in an array/object
+jq 'length' <json_file>
+
+# Output compact (single-line) JSON
+jq -c '.' <json_file>
+
+# Merge a CLI-supplied field into the JSON
+jq --arg name <value> '. + {name: $name}' <json_file>
+
+# Filter array items matching a condition
+jq '.[] | select(.<key> == "<value>")' <json_file>
+
+# Read JSON from stdin (piped)
+cat <json_file> | jq '.'
+
+$ json_file: fd --type f --extension json --max-depth 4 2>/dev/null --- --column 1
+$ key: echo -e "name\nid\ntype\nversion\nstatus\ndata\nitems" --- --column 1
+$ value: echo -e "active\ntrue\nfalse\n1\nhello" --- --column 1

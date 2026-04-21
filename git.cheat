@@ -1,0 +1,47 @@
+% git, git
+
+# Clone a repository
+git clone <url>
+
+# Show working tree status
+git status
+
+# Stage a file
+git add <file>
+
+# Commit staged changes with a message
+git commit --message <message>
+
+# Switch to an existing branch
+git checkout <branch>
+
+# Create and switch to a new branch
+git checkout -b <branch>
+
+# Push current branch to a remote
+git push <remote> <branch>
+
+# Pull updates from a remote branch
+git pull <remote> <branch>
+
+# Show compact commit log
+git log --oneline --decorate --graph
+
+# Show diff of staged changes
+git diff --staged
+
+# Stash current changes
+git stash push --message <message>
+
+# Reset staged changes (keep working tree)
+git reset HEAD <file>
+
+# Show a specific commit
+git show <commit>
+
+$ url: echo -e "https://github.com/owner/repo.git\ngit@github.com:owner/repo.git" --- --column 1
+$ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ message: echo -e "fix: bug\nfeat: new feature\nchore: cleanup\ndocs: update" --- --column 1
+$ branch: git branch --format='%(refname:short)' 2>/dev/null --- --column 1
+$ remote: git remote 2>/dev/null --- --column 1
+$ commit: git log --oneline -n 30 2>/dev/null --- --column 1

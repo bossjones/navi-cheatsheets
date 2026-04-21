@@ -1,0 +1,31 @@
+% screen, terminal
+
+# Start a new screen session
+screen
+
+# Start a new named screen session
+screen -S <session>
+
+# List existing screen sessions
+screen -ls
+
+# Reattach to a screen session
+screen -r <session>
+
+# Detach a session (from outside)
+screen -d <session>
+
+# Force-reattach, detaching from others
+screen -r -d <session>
+
+# Kill a named session
+screen -X -S <session> quit
+
+# Run a command with a log file
+screen -L <command>
+
+# Start a detached session running a command
+screen -dmS <session> <command>
+
+$ session: screen -ls 2>/dev/null | awk '/[0-9]+\./ {print $1}' --- --column 1
+$ command: echo -e "htop\ntop\ntail -f /var/log/system.log\nmake test" --- --column 1

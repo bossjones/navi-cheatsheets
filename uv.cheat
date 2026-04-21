@@ -1,0 +1,45 @@
+% uv, terminal
+
+# Initialize a new uv project
+uv init <project>
+
+# Add a dependency to the project
+uv add <package>
+
+# Remove a dependency from the project
+uv remove <package>
+
+# Sync the environment with the lockfile
+uv sync
+
+# Run a script in the project environment
+uv run <script>
+
+# Resolve and write the lockfile
+uv lock
+
+# Install a package into the active env (pip shim)
+uv pip install <package>
+
+# Create a virtual environment
+uv venv
+
+# Install a specific Python version
+uv python install <version>
+
+# List known/installed Python versions
+uv python list
+
+# Install a tool globally (like pipx)
+uv tool install <package>
+
+# Run a tool without installing it (uvx)
+uv tool run <package>
+
+# Clean the uv cache
+uv cache clean
+
+$ project: echo -e "my-app\nmy-lib\napi\ncli" --- --column 1
+$ package: echo -e "requests\nfastapi\npandas\nnumpy\nrich" --- --column 1
+$ script: fd --type f --extension py --max-depth 3 2>/dev/null --- --column 1
+$ version: echo -e "3.12\n3.11\n3.10\n3.13" --- --column 1

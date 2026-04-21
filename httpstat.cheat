@@ -1,0 +1,36 @@
+% httpstat, network
+
+# Show timing statistics for a URL
+httpstat <url>
+
+# POST form data and show timings
+httpstat <url> -X POST -d "<form_data>"
+
+# Follow redirects while showing timings
+httpstat <url> -L
+
+# Add a custom header
+httpstat <url> -H "<header_name>: <header_value>"
+
+# Send with a specific HTTP method
+httpstat <url> -X <method>
+
+# Use basic authentication
+httpstat <url> -u <user>:<password>
+
+# Save response body to a file (via env var)
+HTTPSTAT_SAVE_BODY=true httpstat <url>
+
+# Show the underlying curl command
+HTTPSTAT_DEBUG=true httpstat <url>
+
+# Force IPv4 only
+httpstat <url> -4
+
+$ url: echo -e "https://httpbin.org/get\nhttps://api.github.com\nhttps://example.com\nhttp://localhost:8000\nhttps://google.com" --- --column 1
+$ form_data: echo -e "name=test\nkey=value\nfoo=bar" --- --column 1
+$ header_name: echo -e "Accept\nContent-Type\nUser-Agent\nAuthorization\nX-Api-Key" --- --column 1
+$ header_value: echo -e "application/json\napplication/xml\ntext/plain\ngzip" --- --column 1
+$ method: echo -e "GET\nPOST\nPUT\nPATCH\nDELETE\nHEAD\nOPTIONS" --- --column 1
+$ user: echo -e "admin\nuser\ntest" --- --column 1
+$ password: echo -e "changeme\npassword\nsecret" --- --column 1

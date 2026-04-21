@@ -1,0 +1,40 @@
+% just, terminal
+
+# Run the default recipe in the justfile
+just
+
+# Run a specific recipe
+just <recipe>
+
+# List all available recipes
+just --list
+
+# Print one-line recipe summary
+just --summary
+
+# Show the source of a specific recipe
+just --show <recipe>
+
+# Interactively pick a recipe to run
+just --choose
+
+# Evaluate variables without running
+just --evaluate
+
+# Dry-run a recipe (print commands only)
+just --dry-run <recipe>
+
+# Override a variable for a recipe
+just --set <var> <value> <recipe>
+
+# Use a specific justfile
+just --justfile <file> <recipe>
+
+# Print shell completions
+just --completions <shell>
+
+$ recipe: just --summary 2>/dev/null --- --column 1
+$ var: echo -e "env\ntarget\nversion\nname" --- --column 1
+$ value: echo -e "dev\nprod\nrelease\ndebug" --- --column 1
+$ file: fd --type f --max-depth 3 justfile 2>/dev/null --- --column 1
+$ shell: echo -e "bash\nzsh\nfish\npowershell" --- --column 1

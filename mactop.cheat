@@ -1,0 +1,25 @@
+% mactop, process
+
+# Launch mactop (usually requires root)
+mactop
+
+# Launch mactop with sudo
+sudo mactop
+
+# Refresh at a custom interval (milliseconds)
+sudo mactop --interval <interval>
+
+# Use a specific UI color
+sudo mactop --color <color>
+
+# Run without the TUI (print metrics to stdout)
+sudo mactop --no-ui
+
+# Show help
+sudo mactop --help
+
+# Show version
+sudo mactop --version
+
+$ interval: echo -e "500\n1000\n2000\n5000" --- --column 1
+$ color: echo -e "green\nblue\ncyan\nmagenta\nyellow\nred\nwhite" --- --column 1

@@ -1,0 +1,41 @@
+% repomix, terminal
+
+# Pack the current directory into a single file
+repomix
+
+# Pack a specific directory
+repomix <directory>
+
+# Write output to a specific file
+repomix --output <output>
+
+# Choose output style (xml/markdown/plain)
+repomix --style <style>
+
+# Compress output to reduce token count
+repomix --compress
+
+# Include only matching patterns
+repomix --include <patterns>
+
+# Ignore matching patterns
+repomix --ignore <patterns>
+
+# Pack a remote GitHub repository
+repomix --remote <repo>
+
+# Generate a repomix config file
+repomix --init
+
+# Choose token-count tokenizer
+repomix --token-count-encoding <encoding>
+
+# Copy packed output to the clipboard
+repomix --copy
+
+$ directory: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ output: echo -e "repomix-output.xml\nrepomix-output.md\nrepomix-output.txt" --- --column 1
+$ style: echo -e "xml\nmarkdown\nplain" --- --column 1
+$ patterns: echo -e "src/**/*.ts\n**/*.py\n**/*.md\nREADME*" --- --column 1
+$ repo: echo -e "yamadashy/repomix\nastral-sh/uv\ncasey/just" --- --column 1
+$ encoding: echo -e "o200k_base\ncl100k_base" --- --column 1

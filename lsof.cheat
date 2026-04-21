@@ -1,0 +1,36 @@
+% lsof, process
+
+# List all open files (very large output)
+lsof
+
+# Show what's listening on a port
+sudo lsof -i :<port>
+
+# List connections by protocol
+sudo lsof -i <protocol>
+
+# List connections to or from a host
+sudo lsof -i @<host>
+
+# List files opened by a user
+lsof -u <user>
+
+# List files opened by a PID
+lsof -p <pid>
+
+# List files opened by a command name
+lsof -c <command>
+
+# List open files under a directory
+lsof +D <directory>
+
+# Show all listening TCP sockets without name/port resolution
+lsof -nP -iTCP -sTCP:LISTEN
+
+$ port: echo -e "22\n80\n443\n3000\n5432\n6379\n8080\n8443" --- --column 1
+$ protocol: echo -e "TCP\nUDP\n4\n6" --- --column 1
+$ host: echo -e "localhost\n127.0.0.1\n::1" --- --column 1
+$ user: echo -e "$(whoami)\nroot" --- --column 1
+$ pid: pgrep -l . | awk '{print $1}' --- --column 1
+$ command: echo -e "ssh\nnode\npython\nchrome\nfirefox\ncode" --- --column 1
+$ directory: fd --type d --max-depth 3 2>/dev/null --- --column 1

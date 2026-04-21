@@ -1,0 +1,35 @@
+% figlet, text
+
+# Print text as ASCII-art banner (default font)
+figlet "<text>"
+
+# Render using a specific font
+figlet -f <font> "<text>"
+
+# Limit output width (wrap to N columns)
+figlet -w <width> "<text>"
+
+# Center the banner
+figlet -c "<text>"
+
+# Left-justify the banner
+figlet -l "<text>"
+
+# Right-justify the banner
+figlet -r "<text>"
+
+# Kern letters (close spacing)
+figlet -k "<text>"
+
+# Smush letters together as much as possible
+figlet -S "<text>"
+
+# Read text from stdin and banner it
+echo "<text>" | figlet -f <font>
+
+# List installed figlet fonts
+showfigfonts
+
+$ text: echo -e "hello\nwelcome\nCI/CD\nDEPLOY\nDONE" --- --column 1
+$ font: echo -e "standard\nslant\nbig\nsmall\nbanner\nmini\nshadow\nblock\nlean\nscript" --- --column 1
+$ width: echo -e "60\n80\n100\n120\n160" --- --column 1

@@ -1,0 +1,39 @@
+% hub, git
+
+# Clone a GitHub repo (shorthand form)
+hub clone <repo>
+
+# Open the current repository on GitHub in a browser
+hub browse
+
+# Create a pull request with a message
+hub pull-request -m <message>
+
+# List pull requests
+hub pr list
+
+# Check out a pull request locally
+hub pr checkout <number>
+
+# Fork the current repository
+hub fork
+
+# List issues in the current repo
+hub issue
+
+# Create an issue with a message
+hub issue create -m <message>
+
+# Create a release for a tag
+hub release create <tag>
+
+# Show CI status of the latest commit
+hub ci-status
+
+# Sync local branches with upstream
+hub sync
+
+$ repo: echo -e "owner/repo\nmislav/hub\ngit/git" --- --column 1
+$ message: echo -e "Fix bug\nAdd feature\nUpdate docs" --- --column 1
+$ number: echo -e "1\n2\n3\n10\n42" --- --column 1
+$ tag: echo -e "v0.1.0\nv1.0.0\nv1.2.3" --- --column 1

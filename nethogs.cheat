@@ -1,0 +1,36 @@
+% nethogs, network
+
+# Monitor bandwidth usage per process (default interface)
+sudo nethogs
+
+# Monitor a specific interface
+sudo nethogs <interface>
+
+# Monitor multiple interfaces
+sudo nethogs <interface1> <interface2>
+
+# Set refresh delay in seconds
+sudo nethogs -d <delay>
+
+# Trace mode (dump traffic to stdout)
+sudo nethogs -t <interface>
+
+# Sort by column (sent or received)
+sudo nethogs -s <sort_column>
+
+# View in bytes per second (instead of kb/s)
+sudo nethogs -v <view_mode>
+
+# Capture counts (stop after N refreshes, useful for piping)
+sudo nethogs -c <refresh_count> <interface>
+
+# Show version
+nethogs -V
+
+$ interface: echo -e "en0\neth0\neth1\nwlan0\nany" --- --column 1
+$ interface1: echo -e "en0\neth0\nwlan0" --- --column 1
+$ interface2: echo -e "en1\neth1\nwlan1" --- --column 1
+$ delay: echo -e "1\n2\n5\n10" --- --column 1
+$ sort_column: echo -e "sent\nreceived" --- --column 1
+$ view_mode: echo -e "0\n1\n2\n3" --- --column 1
+$ refresh_count: echo -e "1\n5\n10\n100" --- --column 1

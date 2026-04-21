@@ -1,0 +1,30 @@
+% fdupes, files
+
+# Find duplicates in a directory
+fdupes <path>
+
+# Recursively search subdirectories
+fdupes -r <path>
+
+# Show size of duplicate files
+fdupes -S <path>
+
+# Recursively search and prompt to delete duplicates
+fdupes -r -d <path>
+
+# Auto-delete duplicates keeping the first match (no prompt)
+fdupes -r -N <path>
+
+# Exclude hidden files and directories
+fdupes -r -A <path>
+
+# Follow symlinks while searching
+fdupes -r -s <path>
+
+# Print only a summary of duplicates found
+fdupes -r -m <path>
+
+# Recursive with sizes, useful starting point
+fdupes -r -S <path>
+
+$ path: fd --type d --max-depth 3 2>/dev/null --- --column 1

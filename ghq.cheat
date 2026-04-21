@@ -1,0 +1,35 @@
+% ghq, git
+
+# Clone a repository into the standard ghq path
+ghq get <url>
+
+# Clone via SSH (use authenticated protocol)
+ghq get -p <url>
+
+# Update an existing local clone
+ghq get --update <url>
+
+# Clone and cd into the repo directory
+ghq get --look <url>
+
+# List all managed repositories
+ghq list
+
+# List repositories matching a query
+ghq list <query>
+
+# List repositories with full paths
+ghq list --full-path
+
+# Show the ghq root directory
+ghq root
+
+# Create a new local repository under the ghq root
+ghq create <name>
+
+# Fuzzy-select and cd into a managed repo
+cd $(ghq root)/$(ghq list | fzf)
+
+$ url: echo -e "https://github.com/x-motemen/ghq\nhttps://github.com/cli/cli\nhttps://github.com/git/git" --- --column 1
+$ query: echo -e "github.com\ncli\ngit" --- --column 1
+$ name: echo -e "github.com/owner/new-repo\nowner/new-repo" --- --column 1

@@ -1,0 +1,42 @@
+% fzf, terminal
+
+# Fuzzy-pick a line from stdin
+fzf
+
+# Pick a file interactively (fd-powered source)
+fd --type f | fzf
+
+# Select multiple entries (tab to mark)
+fzf --multi
+
+# Show a live preview of the highlighted item
+fzf --preview '<preview_cmd>'
+
+# Limit the finder to a percentage of terminal height
+fzf --height <height>
+
+# Pre-seed the search query
+fzf --query '<query>'
+
+# Bind a key to an action (e.g. ctrl-o:execute)
+fzf --bind '<binding>'
+
+# Interactively search shell history
+history | fzf
+
+# Pick a git commit from the current repo
+git log --oneline | fzf
+
+# Install fzf shell integration (bash)
+fzf --bash
+
+# Install fzf shell integration (zsh)
+fzf --zsh
+
+# Install fzf shell integration (fish)
+fzf --fish
+
+$ preview_cmd: echo -e "bat --color=always {}\ncat {}\nhead -50 {}\nfile {}" --- --column 1
+$ height: echo -e "40%\n60%\n80%\n100%" --- --column 1
+$ query: echo -e "TODO\nREADME\nconfig\ntest" --- --column 1
+$ binding: echo -e "ctrl-o:execute(bat {})\nctrl-y:execute-silent(echo {} | pbcopy)\nctrl-/:change-preview-window(hidden|)" --- --column 1

@@ -1,0 +1,48 @@
+% http, network
+
+# Simple GET request
+http <url>
+
+# HTTPS GET (using the https alias)
+https <host>
+
+# Request with a specific HTTP method
+http <method> <url>
+
+# Send JSON body fields (= for string, := for raw JSON)
+http <method> <url> <body_key>=<body_value>
+
+# Add a custom header
+http <url> <header_name>:<header_value>
+
+# Add a URL query parameter
+http <url> <query_key>==<query_value>
+
+# Bearer token authentication
+http <url> "Authorization:Bearer <token>"
+
+# Basic authentication
+http --auth <user>:<password> <url>
+
+# Download a file (stream to disk)
+http --download <url>
+
+# Follow redirects and show full response headers
+http --follow --verbose <url>
+
+# Send multipart form with a file upload
+http --form <method> <url> <body_key>@<file_path>
+
+$ url: echo -e "https://httpbin.org/get\nhttps://httpbin.org/post\nhttps://api.github.com/users/octocat\nhttp://localhost:8000\nhttps://jsonplaceholder.typicode.com/posts/1" --- --column 1
+$ host: echo -e "httpbin.org/get\napi.github.com\nexample.com" --- --column 1
+$ method: echo -e "GET\nPOST\nPUT\nPATCH\nDELETE\nHEAD\nOPTIONS" --- --column 1
+$ body_key: echo -e "name\nemail\ntitle\nbody\nuserId" --- --column 1
+$ body_value: echo -e "test\nexample\nfoo\nbar" --- --column 1
+$ header_name: echo -e "Accept\nContent-Type\nUser-Agent\nX-Api-Key\nCookie" --- --column 1
+$ header_value: echo -e "application/json\napplication/xml\ntext/plain\ngzip" --- --column 1
+$ query_key: echo -e "page\nlimit\nq\nid\nsort" --- --column 1
+$ query_value: echo -e "1\n10\n100\nasc\ndesc" --- --column 1
+$ token: echo -e "changeme\nCHANGE_ME_TOKEN" --- --column 1
+$ user: echo -e "admin\nuser\ntest" --- --column 1
+$ password: echo -e "changeme\npassword\nsecret" --- --column 1
+$ file_path: fd --type f --max-depth 4 2>/dev/null --- --column 1

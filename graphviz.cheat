@@ -1,0 +1,33 @@
+% dot, media
+
+# Show Graphviz version
+dot -V
+
+# Render a graph to a chosen format
+dot -T<format> <input> -o <output>
+
+# Render a graph to PNG
+dot -Tpng <input> -o <output_png>
+
+# Render a graph to SVG
+dot -Tsvg <input> -o <output_svg>
+
+# Render a graph to PDF
+dot -Tpdf <input> -o <output_pdf>
+
+# Render inline DOT source to PNG
+echo 'digraph{a->b}' | dot -Tpng -o <output_png>
+
+# Render using a specific layout engine
+dot -K<engine> -Tpng <input> -o <output_png>
+
+# Use neato engine for undirected/spring layout
+dot -Kneato -Tsvg <input> -o <output_svg>
+
+$ input: fd --type f --extension dot --max-depth 4 2>/dev/null --- --column 1
+$ output: echo -e "graph.png\ngraph.svg\ngraph.pdf" --- --column 1
+$ output_png: echo -e "graph.png\nout.png" --- --column 1
+$ output_svg: echo -e "graph.svg\nout.svg" --- --column 1
+$ output_pdf: echo -e "graph.pdf\nout.pdf" --- --column 1
+$ format: echo -e "png\nsvg\npdf\njpg\nps\ndot" --- --column 1
+$ engine: echo -e "dot\nneato\nfdp\nsfdp\ncirco\ntwopi" --- --column 1

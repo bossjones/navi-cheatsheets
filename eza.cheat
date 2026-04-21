@@ -1,0 +1,36 @@
+% eza, files
+
+# List files in the current directory
+eza
+
+# Long listing with metadata
+eza -l <path>
+
+# Long listing including hidden files
+eza -la <path>
+
+# Tree view with a depth limit
+eza --tree --level=<depth> <path>
+
+# Long listing with git status column
+eza -l --git <path>
+
+# Long listing with icons
+eza -l --icons <path>
+
+# Sort long listing by a field
+eza -l --sort=<field> <path>
+
+# Group directories first
+eza -l --group-directories-first <path>
+
+# Control color output
+eza -l --color=<when> <path>
+
+# Long listing with recursive total size for directories
+eza -l --total-size <path>
+
+$ path: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ depth: echo -e "1\n2\n3\n5" --- --column 1
+$ field: echo -e "name\nsize\nmodified\ntype\nextension\ncreated\naccessed" --- --column 1
+$ when: echo -e "auto\nalways\nnever" --- --column 1

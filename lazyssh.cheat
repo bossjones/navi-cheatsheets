@@ -1,0 +1,23 @@
+% lazyssh, network
+
+# Launch the LazySSH terminal UI
+lazyssh
+
+# Print the LazySSH version
+lazyssh --version
+
+# Show help
+lazyssh --help
+
+# Launch with a specific SSH config file
+lazyssh --config <ssh_config>
+
+# Launch using a specific known_hosts file
+lazyssh --known-hosts <known_hosts_file>
+
+# Launch and preselect a host from your SSH config
+lazyssh --host <ssh_host>
+
+$ ssh_config: echo -e "~/.ssh/config\n~/.ssh/config.work\n~/.ssh/config.personal" --- --column 1
+$ known_hosts_file: echo -e "~/.ssh/known_hosts\n~/.ssh/known_hosts.work" --- --column 1
+$ ssh_host: echo -e "server1\nserver2\nproduction\nstaging\ndev" --- --column 1

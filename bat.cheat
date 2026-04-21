@@ -1,0 +1,37 @@
+% bat, text
+
+# Display a file with syntax highlighting
+bat <file>
+
+# Show line numbers only (no grid, no git header)
+bat --style=numbers <file>
+
+# Force a specific language for highlighting
+bat --language=<language> <file>
+
+# Disable paging (stream straight to stdout)
+bat --paging=never <file>
+
+# Pick a specific color theme
+bat --theme=<theme> <file>
+
+# List all available themes
+bat --list-themes
+
+# Show a git-style diff for a file (changed lines only)
+bat --diff <file>
+
+# Highlight a specific line or range
+bat --highlight-line=<range> <file>
+
+# Concatenate multiple files (plain style, no decorations)
+bat --style=plain <file>
+
+# Generate shell completion script
+bat --completion <shell>
+
+$ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ language: echo -e "json\npython\nbash\nyaml\nmarkdown\nrust\ngo" --- --column 1
+$ theme: echo -e "Dracula\nMonokai Extended\nNord\nSolarized (dark)\nSolarized (light)\nOneHalfDark\nGitHub" --- --column 1
+$ range: echo -e "1\n1:10\n5:\n:20" --- --column 1
+$ shell: echo -e "bash\nzsh\nfish\npowershell\nelvish" --- --column 1

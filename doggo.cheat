@@ -1,0 +1,37 @@
+% doggo, network
+
+# Simple A record lookup
+doggo <domain>
+
+# Query a specific record type
+doggo <domain> <record_type>
+
+# Use a specific DNS resolver
+doggo <domain> @<resolver>
+
+# Reverse DNS lookup for an IP
+doggo --reverse <ip_address>
+
+# Query over DNS-over-HTTPS (DoH)
+doggo <domain> @https://cloudflare-dns.com/dns-query
+
+# Query over DNS-over-TLS (DoT)
+doggo <domain> @tls://1.1.1.1
+
+# Output as JSON
+doggo <domain> --json
+
+# Short answer only (like dig +short)
+doggo <domain> --short
+
+# Query with a specific class
+doggo <domain> --class <dns_class>
+
+# Force IPv4 transport only
+doggo <domain> --ipv4
+
+$ domain: echo -e "example.com\ngoogle.com\ncloudflare.com\ngithub.com\nmrkaran.dev" --- --column 1
+$ record_type: echo -e "A\nAAAA\nMX\nTXT\nNS\nSOA\nCNAME\nPTR\nSRV\nCAA" --- --column 1
+$ resolver: echo -e "1.1.1.1\n8.8.8.8\n9.9.9.9\n208.67.222.222" --- --column 1
+$ ip_address: echo -e "1.1.1.1\n8.8.8.8\n127.0.0.1" --- --column 1
+$ dns_class: echo -e "IN\nCH\nHS\nANY" --- --column 1

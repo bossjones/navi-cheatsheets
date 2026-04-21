@@ -1,0 +1,49 @@
+% op, security
+
+# Sign in to 1Password
+op signin
+
+# Show current signed-in account
+op whoami
+
+# List vaults
+op vault list
+
+# List items in a vault
+op item list --vault <vault>
+
+# Get an item by name or ID
+op item get <item>
+
+# Get specific fields from an item
+op item get <item> --fields <fields>
+
+# Get an item as JSON
+op item get <item> --format json
+
+# Create a new item of a given category
+op item create --category <category>
+
+# List documents
+op document list
+
+# Get a document by name or ID
+op document get <document>
+
+# Read a secret via op:// reference
+op read "op://<vault>/<item>/<fields>"
+
+# Run a command with secrets injected as env vars
+op run -- <command>
+
+# Inject secrets into a template file
+op inject -i <template> -o <output>
+
+$ vault: echo -e "Personal\nWork\nShared\nPrivate" --- --column 1
+$ item: echo -e "GitHub\nAWS\nGmail\nSlack" --- --column 1
+$ fields: echo -e "password\nusername\notp\ncredential\nnotesPlain" --- --column 1
+$ category: echo -e "login\npassword\nsecure_note\napi_credential\nsshkey" --- --column 1
+$ document: echo -e "SSH Key\nCertificate\nConfig" --- --column 1
+$ command: echo -e "env\nnpm start\npython app.py" --- --column 1
+$ template: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ output: echo -e ".env\nconfig.yaml\nsecrets.json" --- --column 1

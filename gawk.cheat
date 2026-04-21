@@ -1,0 +1,40 @@
+% gawk, text
+
+# Run an inline awk program on a file
+gawk '<program>' <file>
+
+# Print the Nth field using a custom separator
+gawk -F '<separator>' '{print $1}' <file>
+
+# Pass a variable from the shell into the program
+gawk -v <var>=<value> '{print <var>, $0}' <file>
+
+# Execute an awk script from a file
+gawk -f <script> <file>
+
+# Print a specific line number
+gawk 'NR==<line>' <file>
+
+# Sum the values in the first column
+gawk '{sum += $1} END {print sum}' <file>
+
+# Print only lines matching a pattern
+gawk '/<pattern>/' <file>
+
+# Print unique values from a column (seen once)
+gawk '!seen[$1]++' <file>
+
+# Use a specific output field separator
+gawk -v OFS='<separator>' '{print $1, $2}' <file>
+
+# Run in strict POSIX mode
+gawk --posix '<program>' <file>
+
+$ program: echo -e "{print $1}\n{print NF}\n{print NR, $0}\nEND {print NR}" --- --column 1
+$ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ separator: echo -e ",\n\\t\n:\n|\n;" --- --column 1
+$ var: echo -e "name\ncount\nthreshold\nprefix" --- --column 1
+$ value: echo -e "1\n10\n100\nhello" --- --column 1
+$ script: fd --type f --extension awk --max-depth 4 2>/dev/null --- --column 1
+$ line: echo -e "1\n2\n5\n10\n100" --- --column 1
+$ pattern: echo -e "ERROR\nWARN\nTODO\nFIXME" --- --column 1

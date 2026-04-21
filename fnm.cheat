@@ -1,0 +1,31 @@
+% fnm, terminal
+
+# Install a Node.js version
+fnm install <version>
+
+# Switch to a Node.js version for the current shell
+fnm use <version>
+
+# Set a default Node.js version
+fnm default <version>
+
+# Show the active Node.js version
+fnm current
+
+# List locally installed versions
+fnm list
+
+# List versions available to install
+fnm list-remote
+
+# Uninstall a Node.js version
+fnm uninstall <version>
+
+# Emit shell env (auto-switch on cd)
+fnm env --use-on-cd
+
+# Print shell completions
+fnm completions --shell <shell>
+
+$ version: echo -e "lts/latest\n20\n18\n16" --- --column 1
+$ shell: echo -e "bash\nzsh\nfish\npowershell" --- --column 1

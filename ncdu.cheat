@@ -1,0 +1,31 @@
+% ncdu, files
+
+# Analyze disk usage of the current directory
+ncdu
+
+# Analyze a specific path
+ncdu <path>
+
+# Stay on one filesystem (don't cross mount points)
+ncdu -x <path>
+
+# Exclude files matching a pattern
+ncdu --exclude <pattern> <path>
+
+# Exclude pseudo-filesystems like /proc and /sys
+ncdu --exclude-kernfs <path>
+
+# Scan and export results to a file
+ncdu -o <output> <path>
+
+# Load a previously exported scan file
+ncdu -f <input>
+
+# Choose a color mode
+ncdu --color=<mode> <path>
+
+$ path: fd --type d --max-depth 3 2>/dev/null --- --column 1
+$ pattern: echo -e "node_modules\n.git\n*.log\n__pycache__\n.venv\ntarget" --- --column 1
+$ output: echo -e "ncdu-scan.json\n/tmp/ncdu-home.json\n/tmp/ncdu-root.json" --- --column 1
+$ input: fd --type f --max-depth 4 2>/dev/null --- --column 1
+$ mode: echo -e "off\ndark\ndark-bg" --- --column 1

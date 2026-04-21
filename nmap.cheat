@@ -1,0 +1,47 @@
+% nmap, network
+
+# Scan a single host (top 1000 ports)
+nmap <target>
+
+# Scan a subnet in CIDR notation
+nmap <subnet>
+
+# Scan specific ports
+nmap -p <ports> <target>
+
+# Scan all 65535 TCP ports
+nmap -p- <target>
+
+# Service and version detection
+nmap -sV <target>
+
+# OS detection (requires root)
+sudo nmap -O <target>
+
+# Aggressive scan (OS, version, scripts, traceroute)
+sudo nmap -A <target>
+
+# SYN stealth scan (requires root)
+sudo nmap -sS <target>
+
+# UDP scan (requires root)
+sudo nmap -sU <target>
+
+# Ping scan only (host discovery, no port scan)
+nmap -sn <subnet>
+
+# Run a default NSE script category
+nmap --script <script_category> <target>
+
+# Save output in all formats with a basename
+nmap -oA <output_basename> <target>
+
+# Set timing template (higher is faster, less stealthy)
+nmap -T<timing_template> <target>
+
+$ target: echo -e "127.0.0.1\nlocalhost\nexample.com\nscanme.nmap.org\n192.168.1.1" --- --column 1
+$ subnet: echo -e "192.168.1.0/24\n10.0.0.0/24\n172.16.0.0/16\n192.168.0.0/16" --- --column 1
+$ ports: echo -e "22\n80\n443\n22,80,443\n1-1024\n80,443,8000-8100" --- --column 1
+$ script_category: echo -e "default\nvuln\nsafe\nauth\ndiscovery\nintrusive\nexploit\nmalware" --- --column 1
+$ output_basename: echo -e "scan\nnmap-scan\nresults" --- --column 1
+$ timing_template: echo -e "0\n1\n2\n3\n4\n5" --- --column 1

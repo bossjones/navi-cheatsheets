@@ -6,7 +6,13 @@ procs
 # Filter processes by a keyword (name, command, user, etc.)
 procs <keyword>
 
-# Watch processes (live refresh)
+# Match processes that satisfy ALL keywords (AND)
+procs --and <keyword1> <keyword2>
+
+# Match processes that satisfy ANY keyword (OR)
+procs --or <keyword1> <keyword2>
+
+# Watch processes (live refresh, 1s)
 procs --watch
 
 # Watch at a custom refresh interval (seconds)
@@ -15,21 +21,21 @@ procs --watch-interval <seconds>
 # Tree view of processes
 procs --tree
 
-# Include thread info
-procs --thread
-
-# Sort by a column (e.g. CPU, MEM, TIME)
+# Sort by a column ascending
 procs --sorta <column>
 
-# Show processes listening on TCP ports
-procs --tcp
+# Sort by a column descending
+procs --sortd <column>
 
-# Show processes listening on UDP ports
-procs --udp
-
-# Insert extra columns
+# Insert an extra column (position dictated by config Slot)
 procs --insert <column>
 
+# Generate shell completion script
+procs --gen-completion-out <shell>
+
 $ keyword: echo -e "ssh\nnode\npython\nruby\ndocker" --- --column 1
+$ keyword1: echo -e "ssh\nnode\npython\nruby\ndocker" --- --column 1
+$ keyword2: echo -e "ssh\nnode\npython\nruby\ndocker" --- --column 1
 $ seconds: echo -e "1\n2\n5\n10" --- --column 1
-$ column: echo -e "CPU\nMEM\nTIME\nPID\nUser\nCommand" --- --column 1
+$ column: echo -e "cpu\nmem\ncputime\nrss\nvsz\npid\nuser\ncommand" --- --column 1
+$ shell: echo -e "bash\nzsh\nfish\npowershell\nelvish" --- --column 1

@@ -12,8 +12,14 @@ tre -l <depth>
 # Include hidden files
 tre -a
 
-# Include files ignored by .gitignore
-tre -I
+# Include files ignored by .gitignore (simple mode)
+tre -s
+
+# Only list directories
+tre -d
+
+# Exclude paths matching a regex (repeatable)
+tre -E '<pattern>'
 
 # Emit numbered shell aliases so you can edit listed files fast
 tre -e
@@ -24,9 +30,10 @@ tre -e <editor>
 # Output as JSON (machine-readable)
 tre -j
 
-# Don't colorize output (pipe-friendly)
-tre -c
+# Disable color output (pipe-friendly)
+tre -c never
 
 $ path: fd --type d --max-depth 3 2>/dev/null --- --column 1
 $ depth: echo -e "1\n2\n3\n5\n10" --- --column 1
 $ editor: echo -e "nvim\nlvim\nvim\ncode\nzed" --- --column 1
+$ pattern: echo -e "node_modules\n\\.git\ntarget\n__pycache__" --- --column 1

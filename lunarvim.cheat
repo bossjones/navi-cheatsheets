@@ -27,6 +27,15 @@ lvim ~/.config/lvim/config.lua
 # Run :checkhealth for diagnostics
 lvim +checkhealth
 
+# Show LunarVim info popup for the current filetype
+lvim +LvimInfo
+
+# Reset the LunarVim plugin cache
+lvim +LvimCacheReset +q
+
+# Print the LunarVim version
+lvim +LvimVersion +q
+
 $ file: fd --type f --max-depth 4 2>/dev/null --- --column 1
 $ file1: fd --type f --max-depth 4 2>/dev/null --- --column 1
 $ file2: fd --type f --max-depth 4 2>/dev/null --- --column 1

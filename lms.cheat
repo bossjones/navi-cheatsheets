@@ -1,22 +1,26 @@
 % lms, sync
 
 # Copy files/directories from source to destination (parallel)
-lms copy <src> <dst>
+lms cp <src> <dst>
 
-# Synchronize destination with source (mirror)
+# Synchronize destination with source (mirror, deletes extras)
 lms sync <src> <dst>
 
-# Remove files in dst that don't exist in src
-lms remove <src> <dst>
+# Synchronize additively (skip deletions in destination)
+lms sync --nodelete <src> <dst>
 
-# Verbose output
-lms -v copy <src> <dst>
+# Synchronize using cryptographic hashing for similar files
+lms sync --secure <src> <dst>
 
-# Use a specific number of threads
-lms --threads <threads> sync <src> <dst>
+# Remove one or more directories (parallel)
+lms rm <target>
 
-; `lms sync` will mirror deletions; use `copy` instead if you want additive-only behavior.
+# Copy sequentially (single-threaded)
+lms cp --sequential <src> <dst>
+
+# Verbose copy
+lms -v cp <src> <dst>
 
 $ src: fd --type d --max-depth 3 2>/dev/null --- --column 1
 $ dst: fd --type d --max-depth 3 2>/dev/null --- --column 1
-$ threads: echo -e "2\n4\n8\n16" --- --column 1
+$ target: fd --type d --max-depth 3 2>/dev/null --- --column 1

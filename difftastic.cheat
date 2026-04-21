@@ -15,8 +15,11 @@ difft --language <lang> <file1> <file2>
 # List supported languages
 difft --list-languages
 
-# Show only the summary (no per-hunk output)
+# Show a single-column inline diff (traditional diff style)
 difft --display inline <file1> <file2>
+
+# Emit the diff as machine-readable JSON
+difft --display json <file1> <file2>
 
 # Use difftastic as git's external diff tool for one command
 GIT_EXTERNAL_DIFF=difft git diff

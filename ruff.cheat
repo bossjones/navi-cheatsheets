@@ -1,0 +1,49 @@
+% ruff, dev
+
+# Lint the current directory
+ruff check .
+
+# Lint a specific file
+ruff check <file>
+
+# Auto-fix all fixable lint violations
+ruff check --fix .
+
+# Show fixes as a diff without applying them
+ruff check --diff .
+
+# Lint and output results as JSON
+ruff check --output-format json .
+
+# Watch for file changes and re-lint automatically
+ruff check --watch .
+
+# Lint using only specific rules
+ruff check --select <rule> .
+
+# Lint while ignoring specific rules
+ruff check --ignore <rule> .
+
+# Format all Python files in the current directory
+ruff format .
+
+# Check formatting without writing changes
+ruff format --check .
+
+# Show formatting changes as a diff
+ruff format --diff .
+
+# Format a specific file
+ruff format <file>
+
+# Show documentation for a specific lint rule
+ruff rule <rule>
+
+# List all available linters/plugins
+ruff linter
+
+# Clear the ruff cache
+ruff clean
+
+$ file: fd --type f --extension py 2>/dev/null --- --column 1
+$ rule: echo -e "E501\nE711\nF401\nF841\nI001\nN801\nS101\nB006\nANN001\nRUF100" --- --column 1
